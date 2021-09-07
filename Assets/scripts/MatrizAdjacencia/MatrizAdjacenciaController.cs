@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class controller : MonoBehaviour {
+public class MatrizAdjacenciaController : MonoBehaviour {
 
 	private ClasseGrafo<Vector3,int> grafo;
 	public int numberofnodes;
@@ -32,6 +32,10 @@ public class controller : MonoBehaviour {
 	float x, y,vertical;
 	public Rigidbody rb;
 	public bool auto;
+
+	/// <summary>
+	/// TODO separar controle camera e funcoes de cena deste componente
+	/// </summary>
 
 	void Start () {
 		system =  EventSystem.current;
@@ -78,7 +82,7 @@ public class controller : MonoBehaviour {
 		#endregion
 	}
 	// a void abaixo monta o grafo e faz algumas verificaçoes
-	public void Make(){
+	public void CriarGrafo(){
 		grafo = new ClasseGrafo<Vector3,int> (); // instancia da classe grafo
 		#region default
 		if(grafo.edges.Count > 0){  //caso ja tenha alguma aresta, ele tira da lista;

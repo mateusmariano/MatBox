@@ -471,8 +471,6 @@ GameObject:
   - component: {fileID: 273468427}
   - component: {fileID: 273468426}
   - component: {fileID: 273468431}
-  - component: {fileID: 273468433}
-  - component: {fileID: 273468432}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -558,36 +556,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 273468425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46a8648ae7367fd44b7bcfb5797e8e59, type: 3}
+  m_Script: {fileID: 11500000, guid: df7bd0f49e60c124a981feb2f3db9508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matlines: {fileID: 2100000, guid: fdd8379978fb0824299466bcecb7f8aa, type: 2}
+  matlines: {fileID: 2100000, guid: d57742a2d69492b458a1dd794e77dd32, type: 2}
   matpoints: {fileID: 0}
   nodeobject: {fileID: 101618, guid: ce0363042b0d8174995c830ac05c8d56, type: 2}
   vec: 
   target: {fileID: 465370979}
---- !u!114 &273468432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 273468425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &273468433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 273468425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &343756738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1720,7 @@ GameObject:
   - component: {fileID: 1727084956}
   - component: {fileID: 1727084955}
   m_Layer: 0
-  m_Name: controller
+  m_Name: CenaController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -34,6 +34,10 @@ public class CoordHomoController : MonoBehaviour {
 	public Text matrizresultxt; 
 
 	#endregion
+
+	/// <summary>
+	/// TODO separacao funcoes de cena
+	/// </summary>
 	// Use this for initialization
 	void Start () {
 		CriarPlano ();
@@ -66,11 +70,11 @@ public class CoordHomoController : MonoBehaviour {
 		nosvalues.Add(inst);
 		pointcontrol++;
 		if(pointcontrol >= xnodes.Count){
-			Listtogameobject();
+			ListaToGameObject();
 		}
 	}
 
-	void Listtogameobject(){
+	void ListaToGameObject(){
 		for(int i = 0; i < nosvalues.Count;i++){
 			nosvaluesgo[i] = nosvalues.ElementAt(i);
 		}
@@ -136,7 +140,7 @@ public class CoordHomoController : MonoBehaviour {
 	#endregion
 	  
 
-	public void Create(){
+	public void CriarMatriz(){
 		finalnodes = new List<Nodes>();
 		finalnodescalc = new List<Nodes>();
 		#region create
