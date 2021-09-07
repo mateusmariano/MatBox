@@ -55,7 +55,7 @@
      <Compile Include="Assets\scripts\ClasseNodes.cs" />
      <Compile Include="Assets\scripts\CoordenadasHomogeneas\CameraController.cs" />
      <Compile Include="Assets\scripts\CoordenadasHomogeneas\CoordHomoController.cs" />
-     <Compile Include="Assets\scripts\force.cs" />
+     <Compile Include="Assets\scripts\GrafoMenu.cs" />
      <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaController.cs" />
      <Compile Include="Assets\scripts\Menu\menu.cs" />
      <Compile Include="Assets\scripts\menucontrol.cs" />
