@@ -11,7 +11,9 @@ public class PilhaController :MonoBehaviour {
 	public GameObject elemento; 
 	public int limite, topo;
 	public Text pushvalue,limitevalue,tam_p;
+	public DebugController debug;
 	float actual_y;
+
 
 	void Start(){
 		SetInitialData ();
@@ -27,7 +29,7 @@ public class PilhaController :MonoBehaviour {
 			System.Array.Resize(ref pilhavalues,pilhavalues.Length + (limite-pilhavalues.Length));
 		}
 		else{
-			Debug.Log("Erro");
+			debug.ShowDebug ("Erro");
 		}
 	}
 	void SetInitialData(){
