@@ -761,7 +761,7 @@ MonoBehaviour:
   pushvalue: {fileID: 30828639}
   limitevalue: {fileID: 182584877}
   tam_p: {fileID: 599053373}
-  debug: {fileID: 420458186}
+  debug: {fileID: 587250977}
 --- !u!4 &379608964
 Transform:
   m_ObjectHideFlags: 0
@@ -775,12 +775,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &420458186 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114297788893092652, guid: 9ba0adb8fd204d546b21533baa204ff6,
-    type: 2}
-  m_PrefabInternal: {fileID: 919287577}
-  m_Script: {fileID: 11500000, guid: 553bda2fbe34b9646a7109477ad1ab8c, type: 3}
 --- !u!1 &438048544
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +925,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &587250977 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114864417418411252, guid: 9ba0adb8fd204d546b21533baa204ff6,
+    type: 2}
+  m_PrefabInternal: {fileID: 919287577}
+  m_Script: {fileID: 11500000, guid: 553bda2fbe34b9646a7109477ad1ab8c, type: 3}
 --- !u!1 &599053371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,26 +2041,6 @@ Prefab:
     - target: {fileID: 224679711653822848, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 225718636278432252, guid: 9ba0adb8fd204d546b21533baa204ff6,
-        type: 2}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224679711653822848, guid: 9ba0adb8fd204d546b21533baa204ff6,
-        type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224679711653822848, guid: 9ba0adb8fd204d546b21533baa204ff6,
-        type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224679711653822848, guid: 9ba0adb8fd204d546b21533baa204ff6,
-        type: 2}
-      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

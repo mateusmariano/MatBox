@@ -7,16 +7,20 @@ public class DebugController : MonoBehaviour {
 
 	public CanvasGroup canvasGroup;
 	public Text debugText;
-
+	public bool ativado;
 
 	public void ShowDebug(string msg){
 		canvasGroup.alpha = 1;
 		debugText.text = msg;
-		Invoke ("DisableDebug", 4f);
+		if(!ativado){
+			Invoke ("DisableDebug", 4f);
+			ativado = true;
+		}
 	}
 
 	void DisableDebug(){
 		canvasGroup.alpha = 0;
 		debugText.text = "";
+		ativado = false;
 	}
 }

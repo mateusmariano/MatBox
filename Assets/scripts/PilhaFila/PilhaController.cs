@@ -38,8 +38,8 @@ public class PilhaController :MonoBehaviour {
 	}
 	#region pop_push
 	public void Push(){ //void push, ela tambem instancia os Gameobjects da pilha na tela.
-		if(topo == limite){
-			Debug.Log("limite da pilha atingido");
+		if(topo + 1 == limite){
+			debug.ShowDebug("limite da pilha atingido");
 		}
 		else if(topo < limite-1){
 			topo++;
@@ -52,7 +52,7 @@ public class PilhaController :MonoBehaviour {
 	}
 	public void Pop(){ //void pop, remove o elemento no topo da pilha, e destroi o gameobject instanciado;
 		if(topo < 0){
-			Debug.Log("a pilha esta vazia");
+			debug.ShowDebug("a pilha esta vazia");
 		}
 		else{
 			Destroy(auxpilhainstancia[topo]);
@@ -67,7 +67,7 @@ public class PilhaController :MonoBehaviour {
 	// esta region faz o calculo da DEC
 	public void Dec(){
 		if(topo < 0){
-			Debug.Log("a pilha esta vazia");
+			debug.ShowDebug("a pilha esta vazia");
 		}
 		else{
 			pilhavalues[topo] = pilhavalues[topo] -1;
@@ -96,10 +96,10 @@ public class PilhaController :MonoBehaviour {
 		double valor = 0;
 
 		if(topo < 0 ){
-			Debug.Log("pilha vazia");
+			debug.ShowDebug("pilha vazia");
 		}
 		else if(topo < 2 && topo == 0){
-			Debug.Log(" a pilha precisa ter no minimo 2 elementos para esta operacao");
+			debug.ShowDebug(" a pilha precisa ter no minimo 2 elementos para esta operacao");
 		}
 		else{
 			switch (operacao) {
