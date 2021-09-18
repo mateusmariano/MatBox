@@ -21,6 +21,11 @@ public class PilhaController :MonoBehaviour {
 	void Update(){ 
 		tam_p.text = (topo+1).ToString();
 	}
+	void SetInitialData(){
+		topo = -1;
+		actual_y = -4.67f;
+	}
+	#region limite
 	public void Limite(){ 
 		int curlimite = limite;
 		if (limitevalue.text != "") {
@@ -35,10 +40,7 @@ public class PilhaController :MonoBehaviour {
 			debug.ShowDebug ("Insira um valor para ser  \n adicionado como limite.");
 		}
 	}
-	void SetInitialData(){
-		topo = -1;
-		actual_y = -4.67f;
-	}
+	#endregion
 	#region pop_push
 	public void Push(){ //void push, ela tambem instancia os Gameobjects da pilha na tela.
 		if(!TemErros ()){
