@@ -23,36 +23,37 @@ public class PilhaController :MonoBehaviour {
 	}
 	public void Limite(){ 
 		int curlimite = limite;
-		if(System.Convert.ToInt32(limitevalue.text) >= curlimite){
-			limite = System.Convert.ToInt32(limitevalue.text);
-			System.Array.Resize(ref auxpilhainstancia,auxpilhainstancia.Length + (limite-auxpilhainstancia.Length));
-			System.Array.Resize(ref pilhavalues,pilhavalues.Length + (limite-pilhavalues.Length));
-		}
-		else{
-			debug.ShowDebug ("Erro");
+		if (limitevalue.text != "") {
+			if (System.Convert.ToInt32 (limitevalue.text) >= curlimite) {
+				limite = System.Convert.ToInt32 (limitevalue.text);
+				System.Array.Resize (ref auxpilhainstancia, auxpilhainstancia.Length + (limite - auxpilhainstancia.Length));
+				System.Array.Resize (ref pilhavalues, pilhavalues.Length + (limite - pilhavalues.Length));
+			} else {
+				debug.ShowDebug ("Não é possível mudar o  \n limite para um valor inferior  \n ao tamanho da pilha.");
+			}
+		} else {
+			debug.ShowDebug ("Insira um valor para ser  \n adicionado como limite.");
 		}
 	}
 	void SetInitialData(){
 		topo = -1;
-		actual_y = -5.5f;
+		actual_y = -4.67f;
 	}
 	#region pop_push
 	public void Push(){ //void push, ela tambem instancia os Gameobjects da pilha na tela.
-		if(topo + 1 == limite){
-			debug.ShowDebug("limite da pilha atingido");
-		}
-		else if(topo < limite-1){
+		if(!TemErros ()){
 			topo++;
 			actual_y += 0.9f; // controle do Y do Gameobject;
 			pilha.Add(elemento); // adiciona elemento na pilha;
-			auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-6.3f,actual_y),Quaternion.identity) as GameObject;
+			auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-4f,actual_y),Quaternion.identity) as GameObject;
 			auxpilhainstancia[topo].GetComponentInChildren<Text>().text = pushvalue.text;
 			pilhavalues[topo] = System.Convert.ToInt32(pushvalue.text);
 		}
+
 	}
 	public void Pop(){ //void pop, remove o elemento no topo da pilha, e destroi o gameobject instanciado;
 		if(topo < 0){
-			debug.ShowDebug("a pilha esta vazia");
+			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
 		}
 		else{
 			Destroy(auxpilhainstancia[topo]);
@@ -67,7 +68,7 @@ public class PilhaController :MonoBehaviour {
 	// esta region faz o calculo da DEC
 	public void Dec(){
 		if(topo < 0){
-			debug.ShowDebug("a pilha esta vazia");
+			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
 		}
 		else{
 			pilhavalues[topo] = pilhavalues[topo] -1;
@@ -96,10 +97,10 @@ public class PilhaController :MonoBehaviour {
 		double valor = 0;
 
 		if(topo < 0 ){
-			debug.ShowDebug("pilha vazia");
+			debug.ShowDebug("Não é possível  \n realizar a operação,  \n pois a pilha está vazia.");
 		}
 		else if(topo < 2 && topo == 0){
-			debug.ShowDebug(" a pilha precisa ter no minimo 2 elementos para esta operacao");
+			debug.ShowDebug("A pilha precisa ter  \n no mínimo 2 elementos  \n para esta operação.");
 		}
 		else{
 			switch (operacao) {
@@ -134,6 +135,21 @@ public class PilhaController :MonoBehaviour {
 		auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-6.3f,actual_y),Quaternion.identity) as GameObject;
 		pilhavalues[topo] = (int)valor;
 		auxpilhainstancia[topo].GetComponentInChildren<Text>().text = valor.ToString();
+	}
+
+	public bool TemErros(){
+		if(pushvalue.text == ""){
+			debug.ShowDebug ("Insira um valor para ser  \n adicionado à pilha.");
+			return true;	
+		}
+		if (topo + 1 == limite) {
+			debug.ShowDebug ("Não é possível adicionar \n mais  objetos,o limite da  \n pilha foi atingido.");
+			return true;	
+		} else if (topo < limite - 1) {
+			return false;
+		}
+
+		return false;
 	}
 	#endregion
 
