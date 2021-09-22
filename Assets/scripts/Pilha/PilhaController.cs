@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class PilhaController :MonoBehaviour {
 	
@@ -13,6 +14,7 @@ public class PilhaController :MonoBehaviour {
 	public Text pushvalue,limitevalue,tam_p;
 	public DebugController debug;
 	float actual_y;
+	public HistoricoOperacoesPilhaController historico;
 
 
 	void Start(){
@@ -47,9 +49,10 @@ public class PilhaController :MonoBehaviour {
 			topo++;
 			actual_y += 0.9f; // controle do Y do Gameobject;
 			pilha.Add(elemento); // adiciona elemento na pilha;
-			auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-4f,actual_y),Quaternion.identity) as GameObject;
+			auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-6.4f,actual_y),Quaternion.identity) as GameObject;
 			auxpilhainstancia[topo].GetComponentInChildren<Text>().text = pushvalue.text;
 			pilhavalues[topo] = System.Convert.ToInt32(pushvalue.text);
+			historico.EscreverOperacao (pilhavalues[topo].ToString (), "Push");
 		}
 
 	}
@@ -58,11 +61,13 @@ public class PilhaController :MonoBehaviour {
 			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
 		}
 		else{
+			historico.EscreverOperacao (pilhavalues[topo].ToString (), "Pop");
 			Destroy(auxpilhainstancia[topo]);
 			pilha.Remove(pilha[topo]);
 			pilhavalues[topo] = -1;
 			topo--;
 			actual_y -= 0.9f;
+
 		}
 	}
 	#endregion
@@ -73,8 +78,10 @@ public class PilhaController :MonoBehaviour {
 			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
 		}
 		else{
+			historico.EscreverOperacao ("1", "Dec");
 			pilhavalues[topo] = pilhavalues[topo] -1;
 			auxpilhainstancia[topo].GetComponentInChildren<Text>().text = pilhavalues[topo].ToString();
+
 		}
 	}
 	#endregion
@@ -108,15 +115,19 @@ public class PilhaController :MonoBehaviour {
 			switch (operacao) {
 				case 1:
 					valor = Add ();
+					historico.EscreverOperacao (pilhavalues[topo].ToString (), "Add");
 					break;
 				case 2: 
 					valor = Sub ();
+					historico.EscreverOperacao (pilhavalues[topo].ToString (), "Sub");
 					break;
 				case 3:
 					valor = Mpy ();
+					historico.EscreverOperacao (pilhavalues[topo].ToString (), "Mpy");
 					break;
 				case 4:
 					valor = Div ();
+					historico.EscreverOperacao (pilhavalues[topo].ToString (), "Div");
 					break;
 			}
 			TrataPilha (valor);
@@ -142,6 +153,10 @@ public class PilhaController :MonoBehaviour {
 	public bool TemErros(){
 		if(pushvalue.text == ""){
 			debug.ShowDebug ("Insira um valor para ser  \n adicionado à pilha.");
+			return true;	
+		} 
+		else if(!Regex.IsMatch (pushvalue.text, "^[0-9]+$")){
+			debug.ShowDebug ("Insira um valor numérico  \n adicionado à pilha.");
 			return true;	
 		}
 		if (topo + 1 == limite) {

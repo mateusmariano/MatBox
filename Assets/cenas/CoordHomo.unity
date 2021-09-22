@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
+  m_Color: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2502,7 +2502,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 834923676}
-        m_MethodName: CriarMatriz
+        m_MethodName: Create
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3182,7 +3182,6 @@ GameObject:
   - component: {fileID: 834923672}
   - component: {fileID: 834923671}
   - component: {fileID: 834923676}
-  - component: {fileID: 834923677}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3421,17 +3420,6 @@ MonoBehaviour:
   tmatriztxt: {fileID: 540502573}
   matriztxt: {fileID: 396627099}
   matrizresultxt: {fileID: 1189957882}
---- !u!114 &834923677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 834923670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &878272612
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@
      <Compile Include="Assets\scripts\Menu\menu.cs" />
      <Compile Include="Assets\scripts\menucontrol.cs" />
      <Compile Include="Assets\scripts\Pilha\CenaControllerPF.cs" />
+     <Compile Include="Assets\scripts\Pilha\HistoricoOperacoesPilhaController.cs" />
      <Compile Include="Assets\scripts\Pilha\PilhaController.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Program Files/2017.4.40f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
