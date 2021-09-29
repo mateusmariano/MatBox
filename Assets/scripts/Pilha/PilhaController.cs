@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
 public class PilhaController :MonoBehaviour {
-	
+
 	public List<GameObject> pilha =  new List<GameObject>();
 	public GameObject[] auxpilhainstancia;
 	public int[] pilhavalues;
@@ -16,30 +16,45 @@ public class PilhaController :MonoBehaviour {
 	float actual_y;
 	public HistoricoOperacoesPilhaController historico;
 
-
+	//função chamada ao iniciar a cena
 	void Start(){
 		SetInitialData ();
 	}
+	//função chamada a cada frame
 	void Update(){ 
-		tam_p.text = (topo+1).ToString();
+		tam_p.text = (topo+1).ToString(); // atualiza o texto do tamanho da pilha
 	}
+	// seta o topo da pilha para -1
+	// e configura a posição inicial dos objetos a serem instanciados 
 	void SetInitialData(){
 		topo = -1;
 		actual_y = -4.67f;
 	}
+
 	#region limite
+	// função chamada ao clicar no botao 'Alterar Limite'
 	public void Limite(){ 
-		int curlimite = limite;
+		// caso o texto do limite não seja vazio, continua a alteração do limite
 		if (limitevalue.text != "") {
-			if (System.Convert.ToInt32 (limitevalue.text) >= curlimite) {
+			// caso o valor digitado seja maior que o tamanho da pilha atual, continua a alteração
+			if (System.Convert.ToInt32 (limitevalue.text) >= System.Convert.ToInt32 (tam_p.text)) { 
 				limite = System.Convert.ToInt32 (limitevalue.text);
-				System.Array.Resize (ref auxpilhainstancia, auxpilhainstancia.Length + (limite - auxpilhainstancia.Length));
-				System.Array.Resize (ref pilhavalues, pilhavalues.Length + (limite - pilhavalues.Length));
-			} else {
-				debug.ShowDebug ("Não é possível mudar o  \n limite para um valor inferior  \n ao tamanho da pilha.");
+				System.Array.Resize (ref auxpilhainstancia, auxpilhainstancia.Length
+									+ (limite - auxpilhainstancia.Length));
+				System.Array.Resize (ref pilhavalues, pilhavalues.Length
+									+ (limite - pilhavalues.Length));
 			}
-		} else {
-			debug.ShowDebug ("Insira um valor para ser  \n adicionado como limite.");
+			// caso o valor digitado seja menor que o tamanho da pilha atual, entra em exceção
+			else {
+				debug.ShowDebug ("Não é possível mudar o  \n " +
+								"limite para um valor inferior  \n " +
+								"ao tamanho da pilha.");
+			}
+		}
+		// caso o valor digitado seja vazio
+		else {
+			debug.ShowDebug ("Insira um valor para ser  \n " +
+							"adicionado como limite.");
 		}
 	}
 	#endregion
@@ -47,26 +62,30 @@ public class PilhaController :MonoBehaviour {
 	public void Push(){ //void push, ela tambem instancia os Gameobjects da pilha na tela.
 		if(!TemErros ()){
 			topo++;
-			actual_y += 0.9f; // controle do Y do Gameobject;
+			actual_y += 0.9f; // incremento da posição em Y dos objetos da pilha
 			pilha.Add(elemento); // adiciona elemento na pilha;
-			auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-6.4f,actual_y),Quaternion.identity) as GameObject;
+			auxpilhainstancia[topo] = Instantiate(pilha[topo], 
+										new Vector2(-6.4f,actual_y), 
+										Quaternion.identity) as GameObject;
+			//atualiza o texto do elemento inserido
 			auxpilhainstancia[topo].GetComponentInChildren<Text>().text = pushvalue.text;
 			pilhavalues[topo] = System.Convert.ToInt32(pushvalue.text);
+			//atualiza o historico de operacoes
 			historico.EscreverOperacao (pilhavalues[topo].ToString (), "Push");
 		}
-
 	}
 	public void Pop(){ //void pop, remove o elemento no topo da pilha, e destroi o gameobject instanciado;
 		if(topo < 0){
 			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
 		}
 		else{
+			//atualiza o historico de operacoes
 			historico.EscreverOperacao (pilhavalues[topo].ToString (), "Pop");
-			Destroy(auxpilhainstancia[topo]);
-			pilha.Remove(pilha[topo]);
+			Destroy(auxpilhainstancia[topo]); //destroi o objeto no topo
+			pilha.Remove(pilha[topo]); //remove da lista da pilha
 			pilhavalues[topo] = -1;
 			topo--;
-			actual_y -= 0.9f;
+			actual_y -= 0.9f; // decremento da posição em Y dos objetos da pilha
 
 		}
 	}
@@ -102,6 +121,7 @@ public class PilhaController :MonoBehaviour {
 	#endregion
 
 	#region controleOperacoes
+	//void criada para fazer o controle e direcionamento das operações
 	public void ControleOperacoes(int operacao){
 		double valor = 0;
 
@@ -130,6 +150,7 @@ public class PilhaController :MonoBehaviour {
 					historico.EscreverOperacao (pilhavalues[topo].ToString (), "Div");
 					break;
 			}
+			//apos o direcionamento faz o tratamento da pilha
 			TrataPilha (valor);
 		}
 	}
@@ -137,6 +158,9 @@ public class PilhaController :MonoBehaviour {
 
 	#region trataPilha
 	public void TrataPilha(double valor){
+		// o codigo abaixo remove os 2 elementos no topo,
+		//para depois ser adicionado o elemento com
+		//o valor da operacao
 		for(int i = topo; i > topo -2; i --){
 			pilhavalues[i] = -1;
 			pilha.Remove(pilha[i]);
@@ -149,12 +173,12 @@ public class PilhaController :MonoBehaviour {
 		pilhavalues[topo] = (int)valor;
 		auxpilhainstancia[topo].GetComponentInChildren<Text>().text = valor.ToString();
 	}
-
+	// a funcao é chamada para verificar alguns erros da pilha
 	public bool TemErros(){
-		if(pushvalue.text == ""){
+		if(pushvalue.text == ""){ 
 			debug.ShowDebug ("Insira um valor para ser  \n adicionado à pilha.");
 			return true;	
-		} 
+		}
 		else if(!Regex.IsMatch (pushvalue.text, "^[0-9]+$")){
 			debug.ShowDebug ("Insira um valor numérico  \n adicionado à pilha.");
 			return true;	
