@@ -179,7 +179,7 @@ public class PilhaController :MonoBehaviour {
 			debug.ShowDebug ("Insira um valor para ser  \n adicionado à pilha.");
 			return true;	
 		}
-		else if(!Regex.IsMatch (pushvalue.text, "^[0-9]+$")){
+		else if(!Regex.IsMatch (pushvalue.text, "^-?[0-9]+$")){
 			debug.ShowDebug ("Insira um valor numérico  \n adicionado à pilha.");
 			return true;	
 		}
