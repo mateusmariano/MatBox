@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class HistoricoOperacoesPilhaController : MonoBehaviour {
 
 	public Text operacoesText;
+	public int contadorOperacoes = 0;
 
-
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
+	public void LimparHistorico(){
+		contadorOperacoes = 0;
+		operacoesText.text = "";
 	}
 
 	public void EscreverOperacao(string valor, string operacao){
-		operacoesText.text = operacoesText.text + "\n" + operacao + "(" + valor + ")";
+		contadorOperacoes++;
+		operacoesText.text = FormataTexto (valor, operacao, contadorOperacoes.ToString ());
+	}
+
+	private string FormataTexto(string valor, string operacao, string contador){
+		return 	operacoesText.text + "\n" + contadorOperacoes.ToString () + "º." + operacao + "(" + valor + ")";
 	}
 }
