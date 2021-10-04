@@ -58,6 +58,7 @@
      <Compile Include="Assets\scripts\DebugController.cs" />
      <Compile Include="Assets\scripts\Fila\FilaController.cs" />
      <Compile Include="Assets\scripts\GrafoMenu.cs" />
+     <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaCameraController.cs" />
      <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaController.cs" />
      <Compile Include="Assets\scripts\Menu\menu.cs" />
      <Compile Include="Assets\scripts\menucontrol.cs" />

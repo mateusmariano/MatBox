@@ -21,65 +21,20 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public Material mat;
 	public Text matriztext;
 	int counter;
-	EventSystem system;
 	public bool can;
-	public GameObject cam;
 	private int nodecountcontrol;
-	bool rotnow;
 	public Transform center;
-	bool freecam;
-	public Toggle _freecamtg,autofill;
-	float x, y,vertical;
-	public Rigidbody rb;
+	public Toggle autofill;
 	public bool auto;
 
-	/// <summary>
-	/// TODO separar controle camera e funcoes de cena deste componente
-	/// </summary>
-
 	void Start () {
-		system =  EventSystem.current;
 		nodecountcontrol = 0;
-		freecam  = false;
 		for(int a = 0 ; a < 16; a ++){
 			valuestxtinputs[a] = valuestxt[a].GetComponentInParent<InputField>();
 		}
 	}
 	void Update(){
-		//o if abaixo e usado para passar os labels usando o TAB
-		if(Input.GetKeyDown(KeyCode.Tab) || Input.GetKeyDown(KeyCode.Escape)){
-			Selectable prox = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
-			if(prox != null){
-				InputField inputfield = prox.GetComponent<InputField>();
-				if (inputfield != null)
-					inputfield.OnPointerClick(new PointerEventData(system));
-				
-				system.SetSelectedGameObject(prox.gameObject, new BaseEventData(system));
-
-			}
-		}
-		freecam = _freecamtg.isOn;
 		auto = autofill.isOn;
-		rb = GetComponent<Rigidbody>();
-
-		// a region abaixo faz a movimentacao da camera. caso !freecam, a camera fica girando ao redor do centro do grafo, caso freecam ela tem zoom e visao livre com o mouse 
-		#region camerarot
-		if(!freecam){
-			if(rotnow){
-				cam.transform.LookAt(center.position);
-				cam.transform.Translate(Vector3.right * 1 * Time.deltaTime);
-			}
-		}else{
-			if(rotnow){
-				y += 2 * Input.GetAxis("Mouse X");
-				x -= 2 * Input.GetAxis("Mouse Y");
-				transform.eulerAngles =  new Vector3(x,y,0);
-				vertical = Input.GetAxis("Vertical");
-				Vector3 mov = new Vector3(transform.forward.y * vertical,0,vertical);
-				rb.velocity = mov * 20;
-			}
-		}
-		#endregion
 	}
 	// a void abaixo monta o grafo e faz algumas verificaçoes
 	public void CriarGrafo(){
@@ -155,7 +110,6 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 			}
 		}
 		can = true; // variavel de controle para a GL. Apos todo o procedimento acima e liberado para a GL desenhar as arestas
-		rotnow = true; // variavel de controle para a camera começar sua movementacao
 	}
 
 	void OnPostRender(){ // void auxliar utilizada pela biblioteca GL para chamada da funcao que ira desenhar as arestas. Chamada apos renderizacao de todos os objetos em cena
