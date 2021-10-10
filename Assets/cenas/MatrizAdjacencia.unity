@@ -2848,7 +2848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774293013}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: no3
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4202,7 +4202,7 @@ GameObject:
   - component: {fileID: 1136303826}
   - component: {fileID: 1136303825}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasMatriz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6571,7 +6571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1806046425}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: no1
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6701,7 +6701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1893642011}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: no4
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6913,7 +6913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1971132381}
   m_Layer: 0
-  m_Name: vetlocasl
+  m_Name: posicaoNos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7296,7 +7296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2094146195}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: no2
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
