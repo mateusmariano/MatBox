@@ -717,24 +717,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 379608962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8acd8693b11b8e45a7dd8d5fb9ef121, type: 3}
+  m_Script: {fileID: 11500000, guid: 884245c696578a74594aefcc9b2975cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pilha: []
-  auxpilhainstancia:
+  fila: []
+  auxfilainstancia:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  pilhavalues: 0000000000000000000000000000000000000000
-  elemento: {fileID: 114668, guid: 8b0a88a3833cc2a48b04cf77fd017934, type: 2}
+  filavalues: 0000000000000000000000000000000000000000
+  elemento: {fileID: 114668, guid: 8dbe99b795c2c104195c48d1d3bf48c8, type: 2}
   limite: 4
-  topo: 0
+  inicio: 0
+  fim: 0
   pushvalue: {fileID: 30828639}
   limitevalue: {fileID: 182584877}
-  tam_p: {fileID: 0}
-  debug: {fileID: 587250977}
+  tam_f: {fileID: 0}
+  debug: {fileID: 0}
 --- !u!4 &379608964
 Transform:
   m_ObjectHideFlags: 0
@@ -776,12 +777,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &587250977 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114864417418411252, guid: 9ba0adb8fd204d546b21533baa204ff6,
-    type: 2}
-  m_PrefabInternal: {fileID: 919287577}
-  m_Script: {fileID: 11500000, guid: 553bda2fbe34b9646a7109477ad1ab8c, type: 3}
 --- !u!1 &632180215
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +853,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379608963}
+      - m_Target: {fileID: 0}
         m_MethodName: Limite
         m_Mode: 1
         m_Arguments:
@@ -1114,7 +1109,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379608963}
+      - m_Target: {fileID: 0}
         m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
@@ -1348,7 +1343,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379608963}
+      - m_Target: {fileID: 0}
         m_MethodName: Pop
         m_Mode: 1
         m_Arguments:
@@ -2000,7 +1995,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379608963}
+      - m_Target: {fileID: 0}
         m_MethodName: Dec
         m_Mode: 1
         m_Arguments:

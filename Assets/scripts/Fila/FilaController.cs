@@ -9,13 +9,13 @@ public class FilaController : MonoBehaviour {
 	public GameObject[] auxfilainstancia;
 	public int[] filavalues;
 	public GameObject elemento; 
-	public int limite, topo;
+	public int limite, inicio, fim;
 	public Text pushvalue,limitevalue,tam_f;
 	public DebugController debug;
-	float actual_y;
+	float actual_x;
 
 	void Start () {
-		//chamar o SetInitialData para setar os dados iniciais da cena olhar pilha
+		SetInitialData ();
 	}
 	
 	void Update () {
@@ -23,7 +23,9 @@ public class FilaController : MonoBehaviour {
 	}
 
 	public void SetInitialData(){
-		//olhar pilha
+		inicio = 0;
+		fim = -1;
+		actual_x = -7f;
 	}
 
 	#region limite
@@ -34,11 +36,30 @@ public class FilaController : MonoBehaviour {
 
 	#region pop_push
 	public void Push(){ //void push, ela tambem instancia os Gameobjects da fila na tela.
-		//olhar pilha e aplicar a logica de fila
+		if(!TemErros ()){
+			fim++;
+			actual_x += 1f; // incremento da posição em Y dos objetos da pilha
+			fila.Add(elemento); // adiciona elemento na pilha;
+			auxfilainstancia[fim] = Instantiate(fila[fim], 
+									new Vector2(actual_x,-2.17f), 
+									Quaternion.Euler (0,0,90)) as GameObject;
+			//atualiza o texto do elemento inserido
+			auxfilainstancia[fim].GetComponentInChildren<Text>().text = pushvalue.text;
+			filavalues[fim] = System.Convert.ToInt32(pushvalue.text);
+			//atualiza o historico de operacoes
+			//*historico.EscreverOperacao (pilhavalues[fim].ToString (), "Push");
+		}
 
 	}
 	public void Pop(){ //void pop, remove o elemento no fim da fila, e destroi o gameobject instanciado;
 		//olhar pilha e aplicar a logica de fila
+	}
+	#endregion
+
+	#region TrataFila
+	public bool TemErros(){
+
+		return false;
 	}
 	#endregion
 
