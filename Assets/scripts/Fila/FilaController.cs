@@ -17,7 +17,6 @@ public class FilaController : MonoBehaviour {
 	public HistoricoOperacoesController historico;
 
 	/// <summary>
-	/// TODO: verificar condicao (topo < 0 ) para ver se da pra colocar em TemErros
 	/// ajeitar dimensionamento do valor da fila e da pilha
 	/// colocar indicador de memoria (1º, 2º...)
 	/// </summary>
