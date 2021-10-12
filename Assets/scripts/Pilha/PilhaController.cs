@@ -14,7 +14,8 @@ public class PilhaController :MonoBehaviour {
 	public Text pushvalue,limitevalue,tam_p;
 	public DebugController debug;
 	float actual_y;
-	public HistoricoOperacoesPilhaController historico;
+	public HistoricoOperacoesController historico;
+
 
 	//função chamada ao iniciar a cena
 	void Start(){
@@ -43,6 +44,7 @@ public class PilhaController :MonoBehaviour {
 									+ (limite - auxpilhainstancia.Length));
 				System.Array.Resize (ref pilhavalues, pilhavalues.Length
 									+ (limite - pilhavalues.Length));
+				historico.EscreverOperacao (limitevalue.text, "Limite");
 			}
 			// caso o valor digitado seja menor que o tamanho da pilha atual, entra em exceção
 			else {

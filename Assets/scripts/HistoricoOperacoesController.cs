@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HistoricoOperacoesPilhaController : MonoBehaviour {
+public class HistoricoOperacoesController : MonoBehaviour {
 
 	public Text operacoesText;
 	public int contadorOperacoes = 0;
