@@ -12,6 +12,10 @@ public class MatrizAdjacenciaCameraController : MonoBehaviour {
 	float x, y, vertical;
 	public Rigidbody rb;
 
+	/// <summary>
+	/// TODO: ajeitar camera e retirar camera fps
+	/// </summary>
+
 	void Start () {
 		camera = gameObject;
 		camLivre  = false;

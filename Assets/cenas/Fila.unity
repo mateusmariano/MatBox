@@ -814,7 +814,7 @@ MonoBehaviour:
   limitevalue: {fileID: 182584877}
   tam_f: {fileID: 1672267182}
   debug: {fileID: 585332273}
-  historico: {fileID: 379608965}
+  historico: {fileID: 0}
 --- !u!4 &379608964
 Transform:
   m_ObjectHideFlags: 0
