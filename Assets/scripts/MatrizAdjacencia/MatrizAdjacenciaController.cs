@@ -26,6 +26,12 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public Transform center;
 	public Toggle autofill;
 	public bool auto;
+	public CanvasGroup painel;
+	public Text btn_esconderText;
+
+	/// <summary>
+	/// TODO: VELOCIDADE ROTACAO CAMER
+	/// </summary>
 
 	void Start () {
 		nodecountcontrol = 0;
@@ -136,5 +142,10 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public void reset(){ // void que reinicia o programa;
 		int a =Application.loadedLevel;
 		Application.LoadLevel(a);
+	}
+
+	public void EscondePanel(){
+		painel.alpha = painel.alpha == 0 ? 1 : 0;
+		btn_esconderText.text = btn_esconderText.text.Contains ("ESCONDER") ? "MOSTRAR PAINEL" : "ESCONDER PAINEL";
 	}
 }
