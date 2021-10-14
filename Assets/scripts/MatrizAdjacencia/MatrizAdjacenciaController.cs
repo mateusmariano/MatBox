@@ -29,9 +29,6 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public CanvasGroup painel;
 	public Text btn_esconderText;
 
-	/// <summary>
-	/// TODO: VELOCIDADE ROTACAO CAMER
-	/// </summary>
 
 	void Start () {
 		nodecountcontrol = 0;

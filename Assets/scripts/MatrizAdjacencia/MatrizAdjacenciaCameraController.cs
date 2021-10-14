@@ -11,6 +11,7 @@ public class MatrizAdjacenciaCameraController : MonoBehaviour {
 	public Transform cameraCenter;
 	float x, y, vertical;
 	public Rigidbody rb;
+	public Scrollbar rotScroll;
 
 	void Start () {
 		camera = gameObject;
@@ -24,7 +25,7 @@ public class MatrizAdjacenciaCameraController : MonoBehaviour {
 		#region camerarot
 		if(!camLock){
 			camera.transform.LookAt(cameraCenter.position);
-			camera.transform.Translate(Vector3.right * 5 * Time.deltaTime);
+			camera.transform.Translate(Vector3.right * rotScroll.value * 7 * Time.deltaTime);
 		}
 		#endregion
 	}
