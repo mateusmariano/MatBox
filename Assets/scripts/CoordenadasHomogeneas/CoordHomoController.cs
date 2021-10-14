@@ -22,7 +22,7 @@ public class CoordHomoController : MonoBehaviour {
 	public int[,] matrizresul = new int[3,3];
 	public GameObject[] oppanels;
 	public GameObject cam;
-	public Transform target;
+	public Transform target, grafoTransform;
 	int[] pivo = new int[4];
 	int pointcontrol;
 	bool can,tri,rect,now;
@@ -35,9 +35,6 @@ public class CoordHomoController : MonoBehaviour {
 
 	#endregion
 
-	/// <summary>
-	/// TODO separacao funcoes de cena
-	/// </summary>
 	// Use this for initialization
 	void Start () {
 		CriarPlano ();
@@ -60,10 +57,11 @@ public class CoordHomoController : MonoBehaviour {
 
 	void Points(Vector3 points,float value,float yvalue){
 		GameObject inst = Instantiate(nodeobject,points, Quaternion.identity) as GameObject;
+		inst.transform.parent = grafoTransform;
 		if(pointcontrol>54 && pointcontrol<66){
 			inst.GetComponentInChildren<Text>().text = value.ToString();
 		}
-		if( pointcontrol==5|| pointcontrol == 16 || pointcontrol == 27 || pointcontrol == 38 || pointcontrol == 49 || pointcontrol == 60 || pointcontrol == 71 || pointcontrol == 82 || pointcontrol == 93 || pointcontrol == 104 || pointcontrol == 115     ){
+		if( NodeNoEixo(pointcontrol)){
 			inst.GetComponentInChildren<Text>().text = yvalue.ToString();
 
 		}
@@ -363,4 +361,16 @@ public class CoordHomoController : MonoBehaviour {
 
 	}
 	#endregion
+
+	bool NodeNoEixo(int pointControl){
+		//os nós do eixo sempre obedecem a ordem de crescente somando 11
+		int atualSequencia = 5;
+		for(int i = atualSequencia; i <= 115; i += 11){
+			if(pointcontrol == i){
+				return true;
+			}
+		}
+
+		return false;
+	}
 }
