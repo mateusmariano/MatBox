@@ -142,7 +142,4 @@ public class FilaController : MonoBehaviour {
 	}
 	#endregion
 
-	public void Menu(){
-		Application.LoadLevel (0);
-	}
 }

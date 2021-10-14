@@ -136,11 +136,6 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		nodesgam[index].GetComponentInChildren<Text>().text = value.ToString();
 	}
 
-	public void reset(){ // void que reinicia o programa;
-		int a =Application.loadedLevel;
-		Application.LoadLevel(a);
-	}
-
 	public void EscondePanel(){
 		painel.alpha = painel.alpha == 0 ? 1 : 0;
 		btn_esconderText.text = btn_esconderText.text.Contains ("ESCONDER") ? "MOSTRAR PAINEL" : "ESCONDER PAINEL";

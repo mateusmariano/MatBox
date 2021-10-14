@@ -363,12 +363,4 @@ public class CoordHomoController : MonoBehaviour {
 
 	}
 	#endregion
-
-	public void Reset(){
-		int scene = Application.loadedLevel;
-		Application.LoadLevel(scene);
-	}
-	public void Menu(){
-		Application.LoadLevel (0);
-	}
 }

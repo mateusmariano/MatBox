@@ -202,9 +202,6 @@ public class PilhaController :MonoBehaviour {
 	}
 	#endregion
 
-	public void Menu(){
-		Application.LoadLevel (0);
-	}
 }
 
 
