@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class CoordHomoController : MonoBehaviour {
 
@@ -25,8 +26,8 @@ public class CoordHomoController : MonoBehaviour {
 	public Transform target, grafoTransform;
 	int[] pivo = new int[4];
 	int pointcontrol;
-	bool can,tri,rect,now;
-	bool translacao;
+	bool can,now, translacao;
+	public DebugController debug;
 
 	#region Debug
 	public Text tmatriztxt; 
@@ -139,33 +140,29 @@ public class CoordHomoController : MonoBehaviour {
 	  
 
 	public void CriarMatriz(){
+		if(TemErroMatriz ()){
+			return;
+		}
+
 		finalnodes = new List<Nodes>();
 		finalnodescalc = new List<Nodes>();
 		#region create
 		for(int i = 0; i< 6;i++){
 			matrizvalues[i] = System.Int32.Parse(matrizvaluestxt[i].text);
-			tri = true;
 		}
-		if(tri){
-			for(int k = 0; k < 6; k +=2){
-				finalnodes.Add(new Nodes(){childrens = finalnodes.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizvalues[k],matrizvalues[k+1],0),vel = Vector3.zero});
-			}
-			can = true;
+		for(int k = 0; k < 6; k +=2){
+			finalnodes.Add(new Nodes(){childrens = finalnodes.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizvalues[k],matrizvalues[k+1],0),vel = Vector3.zero});
 		}
-		if(rect){
-			for(int k = 0; k < 8; k +=2){
-				finalnodes.Add(new Nodes(){childrens = finalnodes.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizvalues[k],matrizvalues[k+1],0),vel = Vector3.zero});
+		can = true;
 
-			}
-			can = true;
-		}
 		#endregion
-		if(tri){
-			oppanels[0].SetActive(true);
-		}
+		oppanels[0].SetActive(true);
 	}
 	#region translacao
 	public void Translacao(int mataux){
+		if(TemErroMatriz () || TemErroXY ()){
+			return;
+		}
 		textstochange[0].text = " M'ob = Mob * T(dx,dy)";
 		textstochange[2].text = "dx,dy";
 		#region matrizvalues
@@ -241,6 +238,10 @@ public class CoordHomoController : MonoBehaviour {
 	#endregion  
 	#region escalonamento
 	public void Escalonamento(int mataux){
+		if(TemErroMatriz () || TemErroXY ()){
+			return;
+		}
+
 		textstochange[0].text = " M'ob = Mob * S(ex,ey)";
 		textstochange[2].text = "ex,ey";
 		#region matrizvalues
@@ -344,9 +345,7 @@ public class CoordHomoController : MonoBehaviour {
 			matrizresultxt.text +=("\n");
 		}
 		#endregion
-		/*for(int  i = 0; i <= finalnodes.Count; i ++){
-			finalnodes.RemoveAt(i);
-		}*/
+
 		if(finalnodescalc.Count != 0){
 			for(int  i = 0; i <= finalnodescalc.Count; i ++){
 				finalnodescalc.RemoveAt(i);
@@ -371,6 +370,24 @@ public class CoordHomoController : MonoBehaviour {
 			}
 		}
 
+		return false;
+	}
+
+	bool TemErroMatriz(){
+		for(int i = 0; i < matrizvaluestxt.Length; i ++){
+			if(matrizvaluestxt[i].text == "" || !Regex.IsMatch (matrizvaluestxt[i].text, "^-?[0-9]+$")){
+				debug.ShowDebug ("Os valores da matriz não  \nforam inseridos corretamente. \nInsira somente números");
+				return true;
+			}
+		} 
+		return false;
+	}
+
+	bool TemErroXY(){
+		if(dxdy[0].text == "" || !Regex.IsMatch (dxdy[0].text, "^-?[0-9]+$") || dxdy[1].text == "" || !Regex.IsMatch (dxdy[1].text, "^-?[0-9]+$")) {
+			debug.ShowDebug ("Os valores de X e Y não \nforam inseridos corretamente. \nInsira somente números");
+			return true;
+		}
 		return false;
 	}
 }
