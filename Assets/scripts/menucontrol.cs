@@ -23,4 +23,8 @@ public class menucontrol : MonoBehaviour {
 		Application.LoadLevel(3);
 		
 	}
+	public void fila (){
+		Application.LoadLevel(4);
+
+	}
 }

@@ -66,6 +66,7 @@
      <Compile Include="Assets\scripts\menucontrol.cs" />
      <Compile Include="Assets\scripts\Pilha\CenaControllerPF.cs" />
      <Compile Include="Assets\scripts\Pilha\PilhaController.cs" />
+     <None Include="Assets\LogTesteMobile1.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Program Files/2017.4.40f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
