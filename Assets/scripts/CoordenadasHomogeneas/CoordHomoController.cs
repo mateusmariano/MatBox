@@ -26,7 +26,7 @@ public class CoordHomoController : MonoBehaviour {
 	public Transform target, grafoTransform;
 	int[] pivo = new int[4];
 	int pointcontrol;
-	bool can,now, translacao;
+	bool mostrar,mostrarPosOperacao, translacao;
 
 	#region Debug
 	public Text tmatriztxt; 
@@ -105,8 +105,8 @@ public class CoordHomoController : MonoBehaviour {
 	}
 	void Triangles(){
 		GL.Begin(GL.TRIANGLES);
-		if(can){
-			if(!now){
+		if(mostrar){
+			if(!mostrarPosOperacao){
 				GL.Color(Color.green);
 				GL.Vertex(finalnodes.ElementAt(0).pos);
 				GL.Color(Color.blue);
@@ -153,7 +153,7 @@ public class CoordHomoController : MonoBehaviour {
 		for(int k = 0; k < 6; k +=2){
 			finalnodes.Add(new Nodes(){childrens = finalnodes.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizvalues[k],matrizvalues[k+1],0),vel = Vector3.zero});
 		}
-		can = true;
+		mostrar = true;
 
 		#endregion
 		oppanels[0].SetActive(true);
@@ -213,7 +213,7 @@ public class CoordHomoController : MonoBehaviour {
 		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0),vel = Vector3.zero});
 		Debug.Log(finalnodescalc.Count);
 		
-		now = true;
+		mostrarPosOperacao = true;
 		translacao = true;
 
 	}
@@ -319,7 +319,7 @@ public class CoordHomoController : MonoBehaviour {
 		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0),vel = Vector3.zero});
 		Debug.Log(finalnodescalc.Count);
 		
-		now = true;
+		mostrarPosOperacao = true;
 
 	}
 	#endregion
