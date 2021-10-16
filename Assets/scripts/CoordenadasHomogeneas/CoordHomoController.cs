@@ -27,12 +27,12 @@ public class CoordHomoController : MonoBehaviour {
 	int[] pivo = new int[4];
 	int pointcontrol;
 	bool can,now, translacao;
-	public DebugController debug;
 
 	#region Debug
 	public Text tmatriztxt; 
 	public Text matriztxt; 
 	public Text matrizresultxt; 
+	public DebugController debug;
 
 	#endregion
 
@@ -164,7 +164,6 @@ public class CoordHomoController : MonoBehaviour {
 			return;
 		}
 		textstochange[0].text = " M'ob = Mob * T(dx,dy)";
-		textstochange[2].text = "dx,dy";
 		#region matrizvalues
 		matriz[0,0] = matrizvalues[0];
 		matriz[0,1] = matrizvalues[1];
@@ -198,26 +197,9 @@ public class CoordHomoController : MonoBehaviour {
 			}
 		}
 		#endregion
-		#region debug
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				matriztxt.text += ("\t" + matriz[i,a].ToString());
-			}
-			matriztxt.text +=("\n");
-		}
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				tmatriztxt.text += ("\t" + matrizop[i,a].ToString());
-			}
-			tmatriztxt.text +=("\n");
-		}
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				matrizresultxt.text += ("\t" + matrizresul[i,a].ToString());
-			}
-			matrizresultxt.text +=("\n");
-		}
-		#endregion
+
+		FormataMatrizDebug ();
+
 		for(int  i = 0; i <= finalnodes.Count; i ++){
 			finalnodes.RemoveAt(i);
 		}
@@ -243,7 +225,6 @@ public class CoordHomoController : MonoBehaviour {
 		}
 
 		textstochange[0].text = " M'ob = Mob * S(ex,ey)";
-		textstochange[2].text = "ex,ey";
 		#region matrizvalues
 		matriz[0,0] = matrizvalues[0];
 		matriz[0,1] = matrizvalues[1];
@@ -325,26 +306,8 @@ public class CoordHomoController : MonoBehaviour {
 			}
 		}
 		#endregion
-		#region debug
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				matriztxt.text += ("\t" + matriz[i,a].ToString());
-			}
-			matriztxt.text +=("\n");
-		}
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				tmatriztxt.text += ("\t" + matrizop[i,a].ToString());
-			}
-			tmatriztxt.text +=("\n");
-		}
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				matrizresultxt.text += ("\t" + matrizresul[i,a].ToString());
-			}
-			matrizresultxt.text +=("\n");
-		}
-		#endregion
+
+		FormataMatrizDebug ();
 
 		if(finalnodescalc.Count != 0){
 			for(int  i = 0; i <= finalnodescalc.Count; i ++){
@@ -357,6 +320,26 @@ public class CoordHomoController : MonoBehaviour {
 		Debug.Log(finalnodescalc.Count);
 		
 		now = true;
+
+	}
+	#endregion
+
+	#region MatrizModelo
+
+	public void MatrizModelo(){
+		matrizvaluestxt [0].GetComponentInParent<InputField>().text = "0";
+		matrizvaluestxt [1].GetComponentInParent<InputField>().text = "0";
+		matrizvaluestxt [2].GetComponentInParent<InputField>().text = "0";
+		matrizvaluestxt [3].GetComponentInParent<InputField>().text = "2";
+		matrizvaluestxt [4].GetComponentInParent<InputField>().text = "2";
+		matrizvaluestxt [5].GetComponentInParent<InputField>().text = "1";
+		matrizvaluestxt [6].GetComponentInParent<InputField>().text = "1";
+		matrizvaluestxt [7].GetComponentInParent<InputField>().text = "1";
+		matrizvaluestxt [8].GetComponentInParent<InputField>().text = "1";
+
+		CriarMatriz ();
+
+
 
 	}
 	#endregion
@@ -389,5 +372,33 @@ public class CoordHomoController : MonoBehaviour {
 			return true;
 		}
 		return false;
+	}
+
+	void FormataMatrizDebug(){
+		LimpaMatrizDebug ();
+
+		for(int i = 0; i < 3; i ++){
+			for(int a = 0; a < 3;a++){
+				matriztxt.text += ("\t" + matriz[i,a].ToString());
+			}
+			matriztxt.text +=("\n");
+		}
+		for(int i = 0; i < 3; i ++){
+			for(int a = 0; a < 3;a++){
+				tmatriztxt.text += ("\t" + matrizop[i,a].ToString());
+			}
+			tmatriztxt.text +=("\n");
+		}
+		for(int i = 0; i < 3; i ++){
+			for(int a = 0; a < 3;a++){
+				matrizresultxt.text += ("\t" + matrizresul[i,a].ToString());
+			}
+			matrizresultxt.text +=("\n");
+		}
+	}
+	void LimpaMatrizDebug(){
+		matriztxt.text = "";
+		tmatriztxt.text = "";
+		matrizresultxt.text = "";
 	}
 }
