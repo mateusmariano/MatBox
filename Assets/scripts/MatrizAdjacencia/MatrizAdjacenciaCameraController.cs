@@ -25,7 +25,7 @@ public class MatrizAdjacenciaCameraController : MonoBehaviour {
 		#region camerarot
 		if(!camLock){
 			camera.transform.LookAt(cameraCenter.position);
-			camera.transform.Translate(Vector3.right * rotScroll.value * 7 * Time.deltaTime);
+			camera.transform.Translate(Vector3.right * (rotScroll.value - 0.5f) * 14 * Time.deltaTime);
 		}
 		#endregion
 	}

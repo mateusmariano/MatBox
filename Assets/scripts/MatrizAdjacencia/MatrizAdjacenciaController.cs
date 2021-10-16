@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 public class MatrizAdjacenciaController : MonoBehaviour {
 
@@ -21,26 +22,36 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public Material mat;
 	public Text matriztext;
 	int counter;
-	public bool can;
+	public bool mostrar;
 	private int nodecountcontrol;
 	public Transform center;
 	public Toggle autofill;
-	public bool auto;
+	public bool autoPreenchimento;
 	public CanvasGroup painel;
 	public Text btn_esconderText;
-
+	public DebugController debug;
 
 	void Start () {
+		SetInitialData ();
+	}
+
+	void SetInitialData(){
 		nodecountcontrol = 0;
+		//o for abaixo pega os InputFields para o autopreenchimento
 		for(int a = 0 ; a < 16; a ++){
 			valuestxtinputs[a] = valuestxt[a].GetComponentInParent<InputField>();
 		}
 	}
+
 	void Update(){
-		auto = autofill.isOn;
+		autoPreenchimento = autofill.isOn;
 	}
 	// a void abaixo monta o grafo e faz algumas verificaçoes
 	public void CriarGrafo(){
+
+		if(TemErros()){
+			return;
+		}
 		grafo = new ClasseGrafo<Vector3,int> (); // instancia da classe grafo
 		#region default
 		if(grafo.edges.Count > 0){  //caso ja tenha alguma aresta, ele tira da lista;
@@ -48,7 +59,9 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 				grafo.edges.RemoveAt(x);
 			}
 		}
-		for(int t = 0; t < 4; t ++){ //caso tenha algum GameObject (node) ele Destroy da cena. Utilizado para nao ficar com varias esferas sobrepostas na cena;
+		//caso tenha algum GameObject (node) ele o Destroy da cena. 
+		//Utilizado para nao ficar com varias esferas sobrepostas na cena;
+		for(int t = 0; t < 4; t ++){ 
 			if(nodesgam[t] != null){
 				Destroy(nodesgam[t]);
 			}
@@ -56,7 +69,8 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		if(nodecountcontrol <= 0){ // adiciona nodes na lista de 'grafos'.
 			for(int i = 0; i < 4; i ++){
 				grafo.nodes.Add( new Node<Vector3>(){valor = nodespositions[i].position});
-				Points(grafo.nodes[i].valor,i + 1,i); // chama a funcao para instanciar as esferas(nodes) na tela;
+				// chama a funcao para instanciar as esferas(nodes) na tela;
+				Points(grafo.nodes[i].valor,i + 1,i); 
 			}
 		}
 		for(int k = 0 ; k < 4; k ++){ // caso tenha algum laco(GameObject) na cena, este e destruido;
@@ -67,7 +81,7 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 
 		#endregion
 		#region manual
-		if(!auto){  	//preenchimento manual da matriz de adjacencia
+		if(!autoPreenchimento){  	//preenchimento manual da matriz de adjacencia
 			for(int k = 0; k < valuestxt.Length; k ++){
 				matrizvalues[k] = System.Convert.ToInt32(valuestxt[k].text);
 				matriz[k/4,k%4] = matrizvalues[k];
@@ -75,53 +89,65 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		}
 		#endregion
 		#region auto
-		if(auto){		//preenchimento automatico da matriz de adjacencia
+		if(autoPreenchimento){//preenchimento automatico da matriz de adjacencia
 			int rowaux = 1; 
-			for(int i = 0; i <4; i ++){ // este for preenche primeiro os valores da diagonal principal e acima dela
+			// este for preenche primeiro os valores da diagonal principal e acima dela
+			for(int i = 0; i <4; i ++){
 				for(int j = 0; j < rowaux; j++){
-					matriz[i,j] = Random.Range(0,2); // o Random.Range trabalha com : min inclusivo e max exclusivo
+					// o Random.Range trabalha com : min inclusivo e max exclusivo
+					matriz[i,j] = Random.Range(0,2);
 				}
 				rowaux ++;
 			}
 			rowaux = 1;
-			for(int l = 0; l < 4; l++){ // este for apenas "reflete" os valores para abaixo da diagonal principal
+			// este for apenas "reflete" os valores para abaixo da diagonal principal
+			for(int l = 0; l < 4; l++){
 				for(int k = rowaux; k < 4; k ++){
 					matriz[l,k] = matriz[k,l];
 				}
 				rowaux ++;
 			}
+			//preenche os valores ods inputs com os valores da matriz
 			for(int x = 0; x < 16; x ++){
-				valuestxtinputs[x].text = matriz[x/4,x%4].ToString(); //preenche os valores ods inputs com os valores da matriz
+				valuestxtinputs[x].text = matriz[x/4,x%4].ToString();
 			}
 		}
 		#endregion
-		for(int i = 0; i < 4; i ++){ // este for adiciona arestas na lista de 'grafos.edges'
+		// este for adiciona arestas na lista de 'grafos.edges'
+		for(int i = 0; i < 4; i ++){ 
 			for(int j = 0; j < 4; j ++){
 				if(matriz[i,j] == 1){
-					grafo.edges.Add(new Edge<int, Vector3>(){valor = 1, From = grafo.nodes[i],to = grafo.nodes[j]});
+					grafo.edges.Add(new Edge<int, Vector3>(){
+									valor = 1, From = grafo.nodes[i],to = grafo.nodes[j]});
 				}
 			}
 		}
-		for(int i = 0; i < 4; i ++){	//este for instancia os lacos, caso existam, na posicao do node e em uma rotacao randomica em Z 
+		//este for instancia os lacos, caso existam, na posicao do node e em uma rotacao randomica em Z 
+		for(int i = 0; i < 4; i ++){
 			for(int j = 0; j < 4; j ++){
 				if(matriz[i,j] == 1 && i == j){
 					if(ties.Length <= 4){
-						ties[i] = Instantiate(tie,nodespositions[i].position,Quaternion.Euler(0,0,Random.Range(0,361))) as GameObject;
+						ties[i] = Instantiate(tie,nodespositions[i].position,
+								Quaternion.Euler(0,0,Random.Range(0,361))) as GameObject;
 						tiesaux[i] = ties[i];
 					}
 				}
 			}
 		}
-		can = true; // variavel de controle para a GL. Apos todo o procedimento acima e liberado para a GL desenhar as arestas
+		// variavel de controle para a GL. 
+		//Apos todo o procedimento acima e liberado para a GL desenhar as arestas
+		mostrar = true; 
 	}
 
-	void OnPostRender(){ // void auxliar utilizada pela biblioteca GL para chamada da funcao que ira desenhar as arestas. Chamada apos renderizacao de todos os objetos em cena
+	// void auxiliar utilizada pela biblioteca GL para chamada da funcao que ira desenhar as arestas.
+	//Chamada apos renderizacao de todos os objetos em cena
+	void OnPostRender(){ 
 		Lines();
 	}
 	void Lines(){ // void que desenha as arestas coloridas.
 		GL.Begin(GL.LINES);
 		mat.SetPass(0);
-		if(can){
+		if(mostrar){
 			for(int j = 0; j < grafo.edges.Count; j ++){
 					GL.Color(new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f)));
 					GL.Vertex(grafo.edges[j].From.valor);
@@ -139,5 +165,19 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public void EscondePanel(){
 		painel.alpha = painel.alpha == 0 ? 1 : 0;
 		btn_esconderText.text = btn_esconderText.text.Contains ("ESCONDER") ? "MOSTRAR PAINEL" : "ESCONDER PAINEL";
+	}
+
+	bool TemErros (){
+		if (autoPreenchimento) {
+			return false;
+		}
+		for(int i = 0 ; i < valuestxt.Length; i ++){
+			if(valuestxt[i].text == "" || !Regex.IsMatch (valuestxt[i].text , "^?[0-9]+$")){
+				debug.ShowDebug ("Os valores da matriz \n não foram inseridos \n " +
+								"corretamente. Insira \napenas números positivos");
+				return true;
+			}
+		}
+		return false;
 	}
 }
