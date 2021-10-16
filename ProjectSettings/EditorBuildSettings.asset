@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/cenas/menu.unity
+    path: Assets/cenas/Menu.unity
     guid: 26750656fea003d4c944751f9938cab3
   - enabled: 1
     path: Assets/cenas/CoordHomo.unity
@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/cenas/Pilha.unity
     guid: e640d009a126a934c93f22d681f92679
+  - enabled: 1
+    path: Assets/cenas/Fila.unity
+    guid: aecd26413e5b714469b5afe8895be71e
