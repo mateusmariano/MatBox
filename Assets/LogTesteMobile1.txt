@@ -1,11 +1,3 @@
 log de teste mobile 1
 -imagens dos programas menu
--ajuste do codigo do menu para Scene Manager
--lockar em landscape a rotacao
--fila debug
--rotacao camera matriz de adjacencia aumentar
--esconder painel aumentar
--ajustar debug matriz adjacentia
--ta invertido coordenadas com matriz no menu
--extrapolamento em coordenadas 
--debug coordHomo
+-extrapolacao em coordenadas 

@@ -63,7 +63,7 @@
      <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaCameraController.cs" />
      <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaController.cs" />
      <Compile Include="Assets\scripts\Menu\menu.cs" />
-     <Compile Include="Assets\scripts\menucontrol.cs" />
+     <Compile Include="Assets\scripts\MenuController.cs" />
      <Compile Include="Assets\scripts\Pilha\CenaControllerPF.cs" />
      <Compile Include="Assets\scripts\Pilha\PilhaController.cs" />
      <None Include="Assets\LogTesteMobile1.txt" />
