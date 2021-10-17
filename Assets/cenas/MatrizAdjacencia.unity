@@ -2209,7 +2209,7 @@ Prefab:
     - target: {fileID: 225718636278432252, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}

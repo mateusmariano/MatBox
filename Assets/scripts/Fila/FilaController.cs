@@ -15,9 +15,10 @@ public class FilaController : MonoBehaviour {
 	public DebugController debug;
 	float actual_x;
 	public HistoricoOperacoesController historico;
+	const int LIMITE_ATUAL_VERSAO = 15;
+
 
 	/// <summary>
-	/// ajeitar dimensionamento do valor da fila e da pilha
 	/// colocar indicador de memoria (1º, 2º...)
 	/// </summary>
 
@@ -39,20 +40,24 @@ public class FilaController : MonoBehaviour {
 	public void Limite(){ 
 		// caso o texto do limite não seja vazio, continua a alteração do limite
 		if (limitevalue.text != "") {
-			// caso o valor digitado seja maior que o tamanho da pilha atual, continua a alteração
-			if (System.Convert.ToInt32 (limitevalue.text) >= System.Convert.ToInt32 (tam_f.text)) { 
-				limite = System.Convert.ToInt32 (limitevalue.text);
-				System.Array.Resize (ref auxfilainstancia, auxfilainstancia.Length
+			if (System.Convert.ToInt32 (limitevalue.text) > LIMITE_ATUAL_VERSAO) {
+				debug.ShowDebug ("O limite de elementos \n nesta versão não pode ser \n maior que 15 elementos.");
+			} else { 	
+				// caso o valor digitado seja maior que o tamanho da pilha atual, continua a alteração
+				if (System.Convert.ToInt32 (limitevalue.text) >= System.Convert.ToInt32 (tam_f.text)) { 
+					limite = System.Convert.ToInt32 (limitevalue.text);
+					System.Array.Resize (ref auxfilainstancia, auxfilainstancia.Length
 					+ (limite - auxfilainstancia.Length));
-				System.Array.Resize (ref filavalues, filavalues.Length
+					System.Array.Resize (ref filavalues, filavalues.Length
 					+ (limite - filavalues.Length));
-				historico.EscreverOperacao (limitevalue.text, "Limite");
-			}
-			// caso o valor digitado seja menor que o tamanho da pilha atual, entra em exceção
-			else {
-				debug.ShowDebug ("Não é possível mudar o  \n " +
+					historico.EscreverOperacao (limitevalue.text, "Limite");
+				}
+				// caso o valor digitado seja menor que o tamanho da pilha atual, entra em exceção
+				else {
+					debug.ShowDebug ("Não é possível mudar o  \n " +
 					"limite para um valor inferior  \n " +
 					"ao tamanho da fila.");
+				}
 			}
 		}
 		// caso o valor digitado seja vazio

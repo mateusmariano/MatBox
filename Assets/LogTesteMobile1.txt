@@ -1,3 +1,2 @@
 log de teste mobile 1
--imagens dos programas menu
 -extrapolacao em coordenadas 

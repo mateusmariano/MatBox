@@ -35,13 +35,12 @@ public class PilhaController :MonoBehaviour {
 	#region limite
 	// função chamada ao clicar no botao 'Alterar Limite'
 	public void Limite(){ 
-
-		if (System.Convert.ToInt32 (limitevalue.text) > LIMITE_ATUAL_VERSAO) {
-			debug.ShowDebug ("O limite de elementos \n nesta versão não pode ser \n maior que 10 elementos.");
-		} 	
-		else {
-			// caso o texto do limite não seja vazio, continua a alteração do limite
-			if (limitevalue.text != "") {
+		// caso o texto do limite não seja vazio, continua a alteração do limite
+		if (limitevalue.text != "") {
+			if (System.Convert.ToInt32 (limitevalue.text) > LIMITE_ATUAL_VERSAO) {
+				debug.ShowDebug ("O limite de elementos \n nesta versão não pode ser \n maior que 10 elementos.");
+			} 	
+			else {
 				// caso o valor digitado seja maior que o tamanho da pilha atual, continua a alteração
 				if (System.Convert.ToInt32 (limitevalue.text) >= System.Convert.ToInt32 (tam_p.text)) { 
 					limite = System.Convert.ToInt32 (limitevalue.text);
@@ -51,18 +50,18 @@ public class PilhaController :MonoBehaviour {
 					+ (limite - pilhavalues.Length));
 					historico.EscreverOperacao (limitevalue.text, "Limite");
 				}
-			// caso o valor digitado seja menor que o tamanho da pilha atual, entra em exceção
-			else {
-					debug.ShowDebug ("Não é possível mudar o  \n " +
-					"limite para um valor inferior  \n " +
-					"ao tamanho da pilha.");
+				// caso o valor digitado seja menor que o tamanho da pilha atual, entra em exceção
+				else {
+						debug.ShowDebug ("Não é possível mudar o  \n " +
+						"limite para um valor inferior  \n " +
+						"ao tamanho da pilha.");
 				}
 			}
-			// caso o valor digitado seja vazio
-			else {
-					debug.ShowDebug ("Insira um valor para ser  \n " +
-					"adicionado como limite.");
-				}
+		}
+		// caso o valor digitado seja vazio
+		else {
+			debug.ShowDebug ("Insira um valor para ser  \n " +
+				"adicionado como limite.");
 		}
 	}
 	#endregion
