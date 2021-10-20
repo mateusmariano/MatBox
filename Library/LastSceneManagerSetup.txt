@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/cenas/Fila.unity
+- path: Assets/cenas/CoordHomo.unity
   isLoaded: 1
   isActive: 1

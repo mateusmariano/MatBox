@@ -10,20 +10,20 @@ public class CoordHomoController : MonoBehaviour {
 	public List<Nodes> xnodes = new List<Nodes>();
 	public List<Nodes> finalnodes;
 	public List<Nodes> finalnodescalc;
-	public Material mat;
+	public Material nodeMaterial;
 	public GameObject nodeobject;
 	public List<GameObject> nosvalues;
 	public GameObject[] nosvaluesgo;
-	public Text[] matrizvaluestxt,dxdy,textstochange;
+	public Text[] matrizvaluestxt,dxdy;
+	public Text formulaTxt;
 	public int[] matrizvalues,tmatriz;
 	public int[,] matriz = new int[3,3];
 	public int[,] matrizop = new int[3,3];
 	public int[,] matrizopesc = new int[3,3];
 	public int[,] matrizresulaux = new int[3,3];
 	public int[,] matrizresul = new int[3,3];
-	public GameObject[] oppanels;
-	public GameObject cam;
-	public Transform target, grafoTransform;
+	public GameObject panelCalculos;
+	public Transform grafoParent;
 	int[] pivo = new int[4];
 	int pointcontrol;
 	bool mostrar,mostrarPosOperacao, translacao;
@@ -58,7 +58,7 @@ public class CoordHomoController : MonoBehaviour {
 
 	void Points(Vector3 points,float value,float yvalue){
 		GameObject inst = Instantiate(nodeobject,points, Quaternion.identity) as GameObject;
-		inst.transform.parent = grafoTransform;
+		inst.transform.parent = grafoParent;
 		if(pointcontrol>54 && pointcontrol<66){
 			inst.GetComponentInChildren<Text>().text = value.ToString();
 		}
@@ -86,7 +86,7 @@ public class CoordHomoController : MonoBehaviour {
 	}
 	void Lines(){
 		GL.Begin(GL.LINES);
-		mat.SetPass(0);
+		nodeMaterial.SetPass(0);
 
 		for(int x = 0; x < xnodes.Count-1;x++){
 			if(x != xnodes.Count){
@@ -156,14 +156,14 @@ public class CoordHomoController : MonoBehaviour {
 		mostrar = true;
 
 		#endregion
-		oppanels[0].SetActive(true);
+		panelCalculos.SetActive(true);
 	}
 	#region translacao
 	public void Translacao(int mataux){
 		if(TemErroMatriz () || TemErroXY ()){
 			return;
 		}
-		textstochange[0].text = " M'ob = Mob * T(dx,dy)";
+		formulaTxt.text = " M'ob = Mob * T(dx,dy)";
 		#region matrizvalues
 		matriz[0,0] = matrizvalues[0];
 		matriz[0,1] = matrizvalues[1];
@@ -224,7 +224,7 @@ public class CoordHomoController : MonoBehaviour {
 			return;
 		}
 
-		textstochange[0].text = " M'ob = Mob * S(ex,ey)";
+		formulaTxt.text = " M'ob = Mob * S(ex,ey)";
 		#region matrizvalues
 		matriz[0,0] = matrizvalues[0];
 		matriz[0,1] = matrizvalues[1];

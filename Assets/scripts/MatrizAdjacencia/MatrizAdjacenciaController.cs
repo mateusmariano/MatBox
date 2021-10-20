@@ -8,18 +8,17 @@ using System.Text.RegularExpressions;
 public class MatrizAdjacenciaController : MonoBehaviour {
 
 	private ClasseGrafo<Vector3,int> grafo;
-	public int numberofnodes;
 	public int[,] matriz = new int[4,4];
 	public int[] matrizvalues;
 	public Text[] valuestxt;
-	public InputField[] valuestxtinputs;
-	public Transform[] nodespositions;
+	public InputField[] matrizInputFields;
+	public Transform[] posicoesNos;
 	public GameObject node;
-	public GameObject[] nodesgam;
-	public GameObject tie;
-	public GameObject[] ties;
-	public GameObject[] tiesaux;
-	public Material mat;
+	public GameObject[] nodesGameObjects;
+	public GameObject laco;
+	public GameObject[] lacos;
+	public GameObject[] lacosAux;
+	public Material arestaMaterial;
 	public Text matriztext;
 	int counter;
 	public bool mostrar;
@@ -39,7 +38,7 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		nodecountcontrol = 0;
 		//o for abaixo pega os InputFields para o autopreenchimento
 		for(int a = 0 ; a < 16; a ++){
-			valuestxtinputs[a] = valuestxt[a].GetComponentInParent<InputField>();
+			matrizInputFields[a] = valuestxt[a].GetComponentInParent<InputField>();
 		}
 	}
 
@@ -62,20 +61,20 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		//caso tenha algum GameObject (node) ele o Destroy da cena. 
 		//Utilizado para nao ficar com varias esferas sobrepostas na cena;
 		for(int t = 0; t < 4; t ++){ 
-			if(nodesgam[t] != null){
-				Destroy(nodesgam[t]);
+			if(nodesGameObjects[t] != null){
+				Destroy(nodesGameObjects[t]);
 			}
 		}
 		if(nodecountcontrol <= 0){ // adiciona nodes na lista de 'grafos'.
 			for(int i = 0; i < 4; i ++){
-				grafo.nodes.Add( new Node<Vector3>(){valor = nodespositions[i].position});
+				grafo.nodes.Add( new Node<Vector3>(){valor = posicoesNos[i].position});
 				// chama a funcao para instanciar as esferas(nodes) na tela;
 				Points(grafo.nodes[i].valor,i + 1,i); 
 			}
 		}
 		for(int k = 0 ; k < 4; k ++){ // caso tenha algum laco(GameObject) na cena, este e destruido;
-			if(tiesaux[k] != null){
-				Destroy(tiesaux[k]);
+			if(lacosAux[k] != null){
+				Destroy(lacosAux[k]);
 			}
 		}
 
@@ -109,7 +108,7 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 			}
 			//preenche os valores ods inputs com os valores da matriz
 			for(int x = 0; x < 16; x ++){
-				valuestxtinputs[x].text = matriz[x/4,x%4].ToString();
+				matrizInputFields[x].text = matriz[x/4,x%4].ToString();
 			}
 		}
 		#endregion
@@ -126,10 +125,10 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		for(int i = 0; i < 4; i ++){
 			for(int j = 0; j < 4; j ++){
 				if(matriz[i,j] == 1 && i == j){
-					if(ties.Length <= 4){
-						ties[i] = Instantiate(tie,nodespositions[i].position,
+					if(lacos.Length <= 4){
+						lacos[i] = Instantiate(laco,posicoesNos[i].position,
 								Quaternion.Euler(0,0,Random.Range(0,361))) as GameObject;
-						tiesaux[i] = ties[i];
+						lacosAux[i] = lacos[i];
 					}
 				}
 			}
@@ -146,7 +145,7 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	}
 	void Lines(){ // void que desenha as arestas coloridas.
 		GL.Begin(GL.LINES);
-		mat.SetPass(0);
+		arestaMaterial.SetPass(0);
 		if(mostrar){
 			for(int j = 0; j < grafo.edges.Count; j ++){
 					GL.Color(new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f)));
@@ -158,8 +157,8 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		GL.End();
 	}
 	void Points(Vector3 point, int value,int index){ // void que instancia os ndes
-		nodesgam[index] = Instantiate(node,point,Quaternion.identity) as GameObject;
-		nodesgam[index].GetComponentInChildren<Text>().text = value.ToString();
+		nodesGameObjects[index] = Instantiate(node,point,Quaternion.identity) as GameObject;
+		nodesGameObjects[index].GetComponentInChildren<Text>().text = value.ToString();
 	}
 
 	public void EscondePanel(){

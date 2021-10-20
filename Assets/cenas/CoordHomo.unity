@@ -3443,7 +3443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb89e296e62e214299cfbd92c64818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 12c620067e2ebb94ab86d38cf77323b1, type: 2}
+  nodeMaterial: {fileID: 2100000, guid: 12c620067e2ebb94ab86d38cf77323b1, type: 2}
   nodeobject: {fileID: 101618, guid: fa8257bc126240a4db5fa2abd6a1a65a, type: 2}
   nosvalues: []
   nosvaluesgo:
@@ -3581,19 +3581,11 @@ MonoBehaviour:
   dxdy:
   - {fileID: 1905569110}
   - {fileID: 1575437797}
-  textstochange:
-  - {fileID: 1829274546}
-  - {fileID: 1081852842}
-  - {fileID: 0}
+  formulaTxt: {fileID: 1829274546}
   matrizvalues: 000000000000000000000000000000000000000000000000
   tmatriz: 010000000000000000000000000000000000000000000000000000000000000000000000
-  oppanels:
-  - {fileID: 1688794314}
-  - {fileID: 0}
-  - {fileID: 0}
-  cam: {fileID: 834923670}
-  target: {fileID: 0}
-  grafoTransform: {fileID: 1175418056}
+  panelCalculos: {fileID: 1688794314}
+  grafoParent: {fileID: 1175418056}
   tmatriztxt: {fileID: 540502573}
   matriztxt: {fileID: 396627099}
   matrizresultxt: {fileID: 1189957882}

@@ -5808,7 +5808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183c4c62ea722a54aa9c3a47e81e7b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberofnodes: 0
   matrizvalues: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   valuestxt:
   - {fileID: 1021501607}
@@ -5827,7 +5826,7 @@ MonoBehaviour:
   - {fileID: 1705517613}
   - {fileID: 209985551}
   - {fileID: 1676613391}
-  valuestxtinputs:
+  matrizInputFields:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -5844,29 +5843,29 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  nodespositions:
+  posicoesNos:
   - {fileID: 1806046425}
   - {fileID: 2094146195}
   - {fileID: 774293013}
   - {fileID: 1893642011}
   node: {fileID: 101618, guid: 022f03f7dd2473d4fa466182874d0884, type: 2}
-  nodesgam:
+  nodesGameObjects:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  tie: {fileID: 192588, guid: 3d4d26fc7fe9ee846b55b81ac6d935f6, type: 2}
-  ties:
+  laco: {fileID: 192588, guid: 3d4d26fc7fe9ee846b55b81ac6d935f6, type: 2}
+  lacos:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  tiesaux:
+  lacosAux:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  mat: {fileID: 2100000, guid: cfd21313f2e35cf4bba42c790a37fda2, type: 2}
+  arestaMaterial: {fileID: 2100000, guid: cfd21313f2e35cf4bba42c790a37fda2, type: 2}
   matriztext: {fileID: 0}
   mostrar: 0
   center: {fileID: 1862289222}
