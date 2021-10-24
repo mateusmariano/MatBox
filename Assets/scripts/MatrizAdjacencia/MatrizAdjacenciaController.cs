@@ -14,15 +14,13 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	public InputField[] matrizInputFields;
 	public Transform[] posicoesNos;
 	public GameObject node;
-	public GameObject[] nodesGameObjects;
+	public GameObject[] nodes;
 	public GameObject laco;
 	public GameObject[] lacos;
 	public GameObject[] lacosAux;
 	public Material arestaMaterial;
 	public Text matriztext;
-	int counter;
 	public bool mostrar;
-	private int nodecountcontrol;
 	public Transform center;
 	public Toggle autofill;
 	public bool autoPreenchimento;
@@ -35,7 +33,6 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 	}
 
 	void SetInitialData(){
-		nodecountcontrol = 0;
 		//o for abaixo pega os InputFields para o autopreenchimento
 		for(int a = 0 ; a < 16; a ++){
 			matrizInputFields[a] = valuestxt[a].GetComponentInParent<InputField>();
@@ -61,17 +58,15 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		//caso tenha algum GameObject (node) ele o Destroy da cena. 
 		//Utilizado para nao ficar com varias esferas sobrepostas na cena;
 		for(int t = 0; t < 4; t ++){ 
-			if(nodesGameObjects[t] != null){
-				Destroy(nodesGameObjects[t]);
+			if(nodes[t] != null){
+				Destroy(nodes[t]);
 			}
 		}
-		if(nodecountcontrol <= 0){ // adiciona nodes na lista de 'grafos'.
 			for(int i = 0; i < 4; i ++){
 				grafo.nodes.Add( new Node<Vector3>(){valor = posicoesNos[i].position});
 				// chama a funcao para instanciar as esferas(nodes) na tela;
 				Points(grafo.nodes[i].valor,i + 1,i); 
 			}
-		}
 		for(int k = 0 ; k < 4; k ++){ // caso tenha algum laco(GameObject) na cena, este e destruido;
 			if(lacosAux[k] != null){
 				Destroy(lacosAux[k]);
@@ -138,8 +133,7 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		mostrar = true; 
 	}
 
-	// void auxiliar utilizada pela biblioteca GL para chamada da funcao que ira desenhar as arestas.
-	//Chamada apos renderizacao de todos os objetos em cena
+	//Chamada apos uma camera ser renderizada na cena
 	void OnPostRender(){ 
 		Lines();
 	}
@@ -157,8 +151,8 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		GL.End();
 	}
 	void Points(Vector3 point, int value,int index){ // void que instancia os ndes
-		nodesGameObjects[index] = Instantiate(node,point,Quaternion.identity) as GameObject;
-		nodesGameObjects[index].GetComponentInChildren<Text>().text = value.ToString();
+		nodes[index] = Instantiate(node,point,Quaternion.identity) as GameObject;
+		nodes[index].GetComponentInChildren<Text>().text = value.ToString();
 	}
 
 	public void EscondePanel(){
