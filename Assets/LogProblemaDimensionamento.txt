@@ -1,0 +1,5 @@
+dimensionamento em Mobile
+-pilha elementos 
+-coordenadas ( menu reset, title, divisor, 
+-fila (title, limite, bg de cima,)
+- matriz ( valores da matriz, opcoes toggle, esconder painel e rotacao)
