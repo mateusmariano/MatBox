@@ -18,10 +18,6 @@ public class FilaController : MonoBehaviour {
 	const int LIMITE_ATUAL_VERSAO = 15;
 
 
-	/// <summary>
-	/// colocar indicador de memoria (1º, 2º...)
-	/// </summary>
-
 	void Start () {
 		SetInitialData ();
 	}
@@ -75,7 +71,7 @@ public class FilaController : MonoBehaviour {
 			actual_x += 1f; // incremento da posição em Y dos objetos da fila
 			fila.Add(elemento); // adiciona elemento na fila;
 			auxfilainstancia[fim] = Instantiate(fila[fim], 
-									new Vector2(actual_x,-2.17f), 
+									new Vector2(actual_x,-2.85f), 
 									Quaternion.Euler (0,0,90)) as GameObject;
 			//atualiza o texto do elemento inserido
 			auxfilainstancia[fim].GetComponentInChildren<Text>().text = pushvalue.text;
@@ -92,7 +88,7 @@ public class FilaController : MonoBehaviour {
 		else{
 			//atualiza o historico de operacoes
 			historico.EscreverOperacao (filavalues[inicio].ToString (), "Pop");
-			Destroy(auxfilainstancia[inicio]); //destroi o objeto no topo
+			Destroy(auxfilainstancia[inicio]); //destroi o objeto no fim
 			fila.Remove(fila[inicio]); //remove da lista da fila
 			fim--;
 			actual_x -= 1f; // decremento da posição em Y dos objetos da fila
@@ -102,7 +98,7 @@ public class FilaController : MonoBehaviour {
 	#endregion
 	#region unaria
 	public void Dec(){
-		if(inicio < 0){
+		if(fim < 0){
 			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
 		}
 		else{
@@ -113,6 +109,64 @@ public class FilaController : MonoBehaviour {
 		}
 	}
 	#endregion
+
+	#region controleOperacoes
+	//void criada para fazer o controle e direcionamento das operações
+	public void ControleOperacoes(int operacao){
+		double valor = 0;
+
+		if(fim < 0 ){
+			debug.ShowDebug("Não é possível  \n realizar a operação,  \n pois a pilha está vazia.");
+		}
+		else if(fim < 2 && fim == 0){
+			debug.ShowDebug("A pilha precisa ter  \n no mínimo 2 elementos  \n para esta operação.");
+		}
+		else{
+			switch (operacao) {
+			case 1:
+				valor = Add ();
+				historico.EscreverOperacao (filavalues[fim].ToString (), "Add");
+				break;
+			case 2: 
+				valor = Sub ();
+				historico.EscreverOperacao (filavalues[fim].ToString (), "Sub");
+				break;
+			case 3:
+				valor = Mpy ();
+				historico.EscreverOperacao (filavalues[fim].ToString (), "Mpy");
+				break;
+			case 4:
+				valor = Div ();
+				historico.EscreverOperacao (filavalues[fim].ToString (), "Div");
+				break;
+			}
+		
+			//seta o valor do segundo na fila com o valor da operação, já que ele agora será o primeiro
+			auxfilainstancia[1].GetComponentInChildren<Text>().text = valor.ToString();
+			filavalues [1] = (int)valor;
+			//apos o direcionamento faz o tratamento da pilha
+			Pop ();
+		}
+	}
+	#endregion
+
+	#region binaria
+	// esta region faz o calculo da ADD,SUB,MPY & DIV
+	private double Add(){
+		return filavalues[0] + filavalues[1];
+	}
+	private double Sub(){
+		return filavalues[0] - filavalues[1];
+	}
+	private double Mpy(){
+		return filavalues[0] * filavalues[1];
+	}
+	private double Div(){
+		return filavalues[0] / filavalues[1];
+	}
+	#endregion
+
+
 	#region TrataFila
 	public void TrataFila(){
 		for(int atual = 1; atual < auxfilainstancia.Length; atual ++){
@@ -124,7 +178,6 @@ public class FilaController : MonoBehaviour {
 										auxfilainstancia[atual].transform.position.y,
 										auxfilainstancia[atual].transform.position.z);
 			}
-
 		}
 	}
 	public bool TemErros(){

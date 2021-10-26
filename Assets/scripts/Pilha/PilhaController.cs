@@ -176,7 +176,7 @@ public class PilhaController :MonoBehaviour {
 		topo--;
 		actual_y -= 0.9f;
 		pilha.Add(elemento);
-		auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-6.3f,actual_y),Quaternion.identity) as GameObject;
+		auxpilhainstancia[topo] = Instantiate(pilha[topo],new Vector2(-6.4f,actual_y),Quaternion.identity) as GameObject;
 		pilhavalues[topo] = (int)valor;
 		auxpilhainstancia[topo].GetComponentInChildren<Text>().text = valor.ToString();
 	}

@@ -2037,7 +2037,7 @@ RectTransform:
   m_GameObject: {fileID: 789547673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000044, y: 1.0000044, z: 1.0000044}
+  m_LocalScale: {x: 1.0000044, y: 1.5374734, z: 1.0000044}
   m_Children: []
   m_Father: {fileID: 126567188}
   m_RootOrder: 1
@@ -2440,7 +2440,7 @@ Prefab:
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -2
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
@@ -2455,7 +2455,7 @@ Prefab:
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -137.03
+      value: -124.8
       objectReference: {fileID: 0}
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
@@ -2465,7 +2465,7 @@ Prefab:
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -6.080017
+      value: -6.1
       objectReference: {fileID: 0}
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
@@ -2476,6 +2476,11 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0.19215144
+      objectReference: {fileID: 0}
+    - target: {fileID: 224814318014353170, guid: 9ba0adb8fd204d546b21533baa204ff6,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ba0adb8fd204d546b21533baa204ff6, type: 2}
@@ -2903,7 +2908,7 @@ RectTransform:
   m_GameObject: {fileID: 1157289461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.537433, z: 1}
   m_Children: []
   m_Father: {fileID: 126567188}
   m_RootOrder: 0
@@ -3093,7 +3098,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Pilha:      elementos'
+  m_Text: 'Pilha:     elementos'
 --- !u!222 &1232098362
 CanvasRenderer:
   m_ObjectHideFlags: 0
