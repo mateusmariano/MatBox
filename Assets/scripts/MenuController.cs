@@ -8,15 +8,17 @@ public class MenuController : MonoBehaviour {
 		SceneManager.LoadScene ("MatrizAdjacencia");
 	}
 	public void coord (){
-		Application.LoadLevel("CoordHomo");
+		SceneManager.LoadScene("CoordHomo");
 		
 	}
 	public void pilha (){
-		Application.LoadLevel("Pilha");
+		SceneManager.LoadScene("Pilha");
 		
 	}
 	public void fila (){
-		Application.LoadLevel("Fila");
-
+		SceneManager.LoadScene("Fila");
+	}
+	public void sair (){
+		Application.Quit ();
 	}
 }
