@@ -359,7 +359,7 @@ public class CoordHomoController : MonoBehaviour {
 	bool TemErroMatriz(){
 		for(int i = 0; i < matrizvaluestxt.Length; i ++){
 			if(matrizvaluestxt[i].text == "" || !Regex.IsMatch (matrizvaluestxt[i].text, "^-?[0-9]+$")){
-				debug.ShowDebug ("Os valores da matriz não  \nforam inseridos corretamente. \nInsira somente números");
+				debug.ShowDebug ("Os valores da matriz não  \nforam inseridos corretamente. \nInsira somente números.");
 				return true;
 			}
 		} 
@@ -368,7 +368,7 @@ public class CoordHomoController : MonoBehaviour {
 
 	bool TemErroXY(){
 		if(dxdy[0].text == "" || !Regex.IsMatch (dxdy[0].text, "^-?[0-9]+$") || dxdy[1].text == "" || !Regex.IsMatch (dxdy[1].text, "^-?[0-9]+$")) {
-			debug.ShowDebug ("Os valores de X e Y não \nforam inseridos corretamente. \nInsira somente números");
+			debug.ShowDebug ("Os valores de X e Y não \nforam inseridos corretamente. \nInsira somente números.");
 			return true;
 		}
 		return false;

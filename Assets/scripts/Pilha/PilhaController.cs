@@ -83,7 +83,7 @@ public class PilhaController :MonoBehaviour {
 	}
 	public void Pop(){ //void pop, remove o elemento no topo da pilha, e destroi o gameobject instanciado;
 		if(topo < 0){
-			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
+			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia.");
 		}
 		else{
 			//atualiza o historico de operacoes
@@ -101,7 +101,7 @@ public class PilhaController :MonoBehaviour {
 	// esta region faz o calculo da DEC
 	public void Dec(){
 		if(topo < 0){
-			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
+			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia.");
 		}
 		else{
 			historico.EscreverOperacao ("1", "Dec");
@@ -187,7 +187,7 @@ public class PilhaController :MonoBehaviour {
 			return true;	
 		}
 		else if(!Regex.IsMatch (pushvalue.text, "^-?[0-9]+$")){
-			debug.ShowDebug ("Insira um valor numérico  \n adicionado à pilha.");
+			debug.ShowDebug ("Insira um valor numérico  \n para ser adicionado à pilha.");
 			return true;	
 		}
 		if (topo + 1 == limite) {

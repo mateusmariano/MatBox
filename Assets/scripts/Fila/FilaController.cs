@@ -83,7 +83,7 @@ public class FilaController : MonoBehaviour {
 	}
 	public void Pop(){ //void pop, remove o elemento no fim da fila, e destroi o gameobject instanciado;
 		if(fim < 0){
-			debug.ShowDebug("Não é possível \n realizar a operação, \n a fila esta vazia");
+			debug.ShowDebug("Não é possível \n realizar a operação, \n a fila esta vazia.");
 		}
 		else{
 			//atualiza o historico de operacoes
@@ -99,7 +99,7 @@ public class FilaController : MonoBehaviour {
 	#region unaria
 	public void Dec(){
 		if(fim < 0){
-			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia");
+			debug.ShowDebug("Não é possível \n realizar a operação, \n a pilha esta vazia.");
 		}
 		else{
 			historico.EscreverOperacao ("1", "Dec");
@@ -186,11 +186,11 @@ public class FilaController : MonoBehaviour {
 			return true;	
 		}
 		else if(!Regex.IsMatch (pushvalue.text, "^-?[0-9]+$")){
-			debug.ShowDebug ("Insira um valor numérico  \n adicionado à fila.");
+			debug.ShowDebug ("Insira um valor numérico \n para ser adicionado à fila.");
 			return true;	
 		}
 		if (fim + 1 == limite) {
-			debug.ShowDebug ("Não é possível adicionar \n mais  objetos,o limite da  \n fila foi atingido.");
+			debug.ShowDebug ("Não é possível adicionar \n mais  objetos, o limite da  \n fila foi atingido.");
 			return true;	
 		} else if (fim < limite - 1) {
 			return false;

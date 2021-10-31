@@ -167,7 +167,7 @@ public class MatrizAdjacenciaController : MonoBehaviour {
 		for(int i = 0 ; i < valuestxt.Length; i ++){
 			if(valuestxt[i].text == "" || !Regex.IsMatch (valuestxt[i].text , "^?[0-9]+$")){
 				debug.ShowDebug ("Os valores da matriz \n não foram inseridos \n " +
-								"corretamente. Insira \napenas números positivos");
+								"corretamente. Insira \napenas números positivos.");
 				return true;
 			}
 		}
