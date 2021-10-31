@@ -35,7 +35,7 @@ public class FilaController : MonoBehaviour {
 	#region limite
 	public void Limite(){ 
 		// caso o texto do limite não seja vazio, continua a alteração do limite
-		if (limitevalue.text != "") {
+		if (limitevalue.text != "" && Regex.IsMatch (limitevalue.text, "^-?[0-9]+$")) {
 			if (System.Convert.ToInt32 (limitevalue.text) > LIMITE_ATUAL_VERSAO) {
 				debug.ShowDebug ("O limite de elementos \n nesta versão não pode ser \n maior que 15 elementos.");
 			} else { 	

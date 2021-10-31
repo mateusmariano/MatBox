@@ -832,7 +832,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.4
+  m_MatchWidthOrHeight: 0.6
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2253,7 +2253,7 @@ RectTransform:
   m_GameObject: {fileID: 894019360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.021868374, y: 0.02186837, z: 0.02186837}
+  m_LocalScale: {x: -0.046731997, y: 0.046731975, z: 0.046731975}
   m_Children: []
   m_Father: {fileID: 1721980599}
   m_RootOrder: 0
@@ -2445,7 +2445,7 @@ Prefab:
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 5.5
+      value: -1.019989
       objectReference: {fileID: 0}
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
@@ -2465,7 +2465,7 @@ Prefab:
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -6.1
+      value: -15.56
       objectReference: {fileID: 0}
     - target: {fileID: 224041377136486894, guid: 9ba0adb8fd204d546b21533baa204ff6,
         type: 2}
@@ -2481,6 +2481,11 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: -36
+      objectReference: {fileID: 0}
+    - target: {fileID: 114670056914408226, guid: 9ba0adb8fd204d546b21533baa204ff6,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 47
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ba0adb8fd204d546b21533baa204ff6, type: 2}
@@ -2914,8 +2919,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.48, y: 2}
-  m_SizeDelta: {x: 447.95, y: 519.4}
+  m_AnchoredPosition: {x: 415.4, y: 2}
+  m_SizeDelta: {x: 803.9, y: 519.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1157289463
 MonoBehaviour:

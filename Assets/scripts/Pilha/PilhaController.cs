@@ -36,7 +36,7 @@ public class PilhaController :MonoBehaviour {
 	// função chamada ao clicar no botao 'Alterar Limite'
 	public void Limite(){ 
 		// caso o texto do limite não seja vazio, continua a alteração do limite
-		if (limitevalue.text != "") {
+		if (limitevalue.text != "" && Regex.IsMatch (limitevalue.text, "^-?[0-9]+$")) {
 			if (System.Convert.ToInt32 (limitevalue.text) > LIMITE_ATUAL_VERSAO) {
 				debug.ShowDebug ("O limite de elementos \n nesta versão não pode ser \n maior que 10 elementos.");
 			} 	
