@@ -177,6 +177,15 @@ public class CoordHomoController : MonoBehaviour {
 			matriz[2,1] = matrizvalues[5];
 			matriz[2,2] = 1;
 
+			for(int  i = 0; i <= finalnodes.Count; i ++){
+				finalnodes.RemoveAt(i);
+			}
+
+			if(finalnodescalc.Count != 0){
+				for(int  i = 0; i <= finalnodescalc.Count; i ++){
+					finalnodescalc.RemoveAt(i);
+				}
+			}
 		}
 			
 		matrizop[0,0] = 1;
@@ -203,25 +212,10 @@ public class CoordHomoController : MonoBehaviour {
 		}
 		#endregion
 
-		/*for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				Debug.Log (matriz[i,a].ToString());
-			}
-			Debug.Log ("----");
-		}
-*/
+
 		FormataMatrizDebug ();
 
 		AtualizaMatriz ();
-
-		for(int  i = 0; i <= finalnodes.Count; i ++){
-			finalnodes.RemoveAt(i);
-		}
-		if(finalnodescalc.Count != 0){
-			for(int  i = 0; i <= finalnodescalc.Count; i ++){
-				finalnodescalc.RemoveAt(i);
-			}
-		}
 
 		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0),vel = Vector3.zero});
 		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0),vel = Vector3.zero});
@@ -230,9 +224,6 @@ public class CoordHomoController : MonoBehaviour {
 		finalnodescalc.ElementAt (0).pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0);
 		finalnodescalc.ElementAt (1).pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0);
 		finalnodescalc.ElementAt (2).pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0);
-		Debug.Log (finalnodescalc.ElementAt (0).pos);
-		Debug.Log (finalnodescalc.ElementAt (1).pos);
-		Debug.Log (finalnodescalc.ElementAt (2).pos);
 		mostrarPosOperacao = true;
 		translacao = true;
 
