@@ -112,7 +112,6 @@ public class CoordHomoController : MonoBehaviour {
 				GL.Color(Color.blue);
 				GL.Vertex(finalnodes.ElementAt(1).pos);
 				GL.Color(Color.red);
-				
 				GL.Vertex(finalnodes.ElementAt(2).pos);
 				
 			}else{
@@ -121,15 +120,12 @@ public class CoordHomoController : MonoBehaviour {
 				GL.Vertex(finalnodescalc.ElementAt(1).pos);
 				GL.Vertex(finalnodescalc.ElementAt(2).pos);
 
-
-
 				if(!translacao){
 					GL.Color(Color.red);
 					GL.Vertex(finalnodes.ElementAt(0).pos);
 					GL.Color(Color.red);
 					GL.Vertex(finalnodes.ElementAt(1).pos);
 					GL.Color(Color.red);
-					
 					GL.Vertex(finalnodes.ElementAt(2).pos);
 				}
 				
@@ -212,18 +208,14 @@ public class CoordHomoController : MonoBehaviour {
 		}
 		#endregion
 
-
 		FormataMatrizDebug ();
 
 		AtualizaMatriz ();
 
-		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0),vel = Vector3.zero});
-		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0),vel = Vector3.zero});
-		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0),vel = Vector3.zero});
+		AddFinalNodesCalc ();
 
-		finalnodescalc.ElementAt (0).pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0);
-		finalnodescalc.ElementAt (1).pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0);
-		finalnodescalc.ElementAt (2).pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0);
+		AtualizaFinalNodesCalcPos ();
+
 		mostrarPosOperacao = true;
 		translacao = true;
 
@@ -234,6 +226,11 @@ public class CoordHomoController : MonoBehaviour {
 	#region escalonamento
 	public void Escalonamento(int mataux){
 		if(TemErroMatriz () || TemErroXY ()){
+			return;
+		}
+
+		if(dxdy[0].text.Contains ("0") || dxdy[1].text.Contains ("0")  ){
+			debug.ShowDebug ("Não é possível escalonar\n com um valor de X e Y\n equivalente a zero");
 			return;
 		}
 
@@ -249,7 +246,16 @@ public class CoordHomoController : MonoBehaviour {
 			matriz[2,0] = matrizvalues[4];
 			matriz[2,1] = matrizvalues[5];
 			matriz[2,2] = 1;
+
+			if(finalnodescalc.Count != 0){
+				for(int  i = 0; i <= finalnodescalc.Count; i ++){
+					finalnodescalc.RemoveAt(i);
+				}
+			}
 		}
+		AddFinalNodes();
+
+		AtualizaFinalNodesPos();
 
 		#endregion
 		#region calc
@@ -324,17 +330,11 @@ public class CoordHomoController : MonoBehaviour {
 
 		FormataMatrizDebug ();
 
+		AtualizaMatriz ();
 
-		if(finalnodescalc.Count != 0){
-			for(int  i = 0; i <= finalnodescalc.Count; i ++){
-				finalnodescalc.RemoveAt(i);
-			}
-		}
-		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0),vel = Vector3.zero});
-		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0),vel = Vector3.zero});
-		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.4f).ToList(),pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0),vel = Vector3.zero});
-		Debug.Log(finalnodescalc.Count);
-		
+		AddFinalNodesCalc ();
+
+		AtualizaFinalNodesCalcPos ();
 		mostrarPosOperacao = true;
 
 	}
@@ -343,6 +343,11 @@ public class CoordHomoController : MonoBehaviour {
 	#region MatrizModelo
 
 	public void MatrizModelo(){
+
+		if(repeticaoOperacoes[0] || repeticaoOperacoes[1]){
+			debug.ShowDebug ("Para usar a matriz modelo \napos uma operação \né necessárior resetar a cena.");
+			return;
+		}
 		matrizvaluestxt [0].GetComponentInParent<InputField>().text = "0";
 		matrizvaluestxt [1].GetComponentInParent<InputField>().text = "0";
 		matrizvaluestxt [2].GetComponentInParent<InputField>().text = "0";
@@ -354,9 +359,6 @@ public class CoordHomoController : MonoBehaviour {
 		matrizvaluestxt [8].GetComponentInParent<InputField>().text = "1";
 
 		CriarMatriz ();
-
-
-
 	}
 	#endregion
 
@@ -423,4 +425,28 @@ public class CoordHomoController : MonoBehaviour {
 		repeticaoOperacoes [0] = true;
 		repeticaoOperacoes [1] = true;
 	}
+
+	void AddFinalNodesCalc(){
+		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0),vel = Vector3.zero});
+		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0),vel = Vector3.zero});
+		finalnodescalc.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0),vel = Vector3.zero});
+	}
+
+	void AtualizaFinalNodesCalcPos(){
+		finalnodescalc.ElementAt (0).pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0);
+		finalnodescalc.ElementAt (1).pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0);
+		finalnodescalc.ElementAt (2).pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0);
+	}
+
+	void AddFinalNodes(){
+		finalnodes.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[0,0],matrizresul[0,1],0),vel = Vector3.zero});
+		finalnodes.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[1,0],matrizresul[1,1],0),vel = Vector3.zero});
+		finalnodes.Add(new Nodes(){childrens = finalnodescalc.Where(node => Random.value > 0.2f).ToList(),pos = new Vector3(matrizresul[2,0],matrizresul[2,1],0),vel = Vector3.zero});
+	}
+	void AtualizaFinalNodesPos(){
+		finalnodes.ElementAt (0).pos = new Vector3(matriz[0,0],matriz[0,1],0);
+		finalnodes.ElementAt (1).pos = new Vector3(matriz[1,0],matriz[1,1],0);
+		finalnodes.ElementAt (2).pos = new Vector3(matriz[2,0],matriz[2,1],0);
+	}
+
 }
