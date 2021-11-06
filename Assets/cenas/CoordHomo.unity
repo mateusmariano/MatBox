@@ -3553,6 +3553,7 @@ MonoBehaviour:
   tmatriz: 010000000000000000000000000000000000000000000000000000000000000000000000
   panelCalculos: {fileID: 1688794314}
   grafoParent: {fileID: 1175418056}
+  repeticaoOperacoes: 0000
   tmatriztxt: {fileID: 540502573}
   matriztxt: {fileID: 396627099}
   matrizresultxt: {fileID: 1189957882}

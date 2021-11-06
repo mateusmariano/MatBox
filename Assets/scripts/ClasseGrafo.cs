@@ -14,7 +14,7 @@ public class ClasseGrafo <ntype,etype>{
 public class Node<gvalor>{ // classe NODE com variavel gvalor, que auxiliara na classe EDGE
 	public gvalor valor{get;set;}
 }
-public class Edge<evalor,gvalor>{ //classe EDGE com variavel valor, from e to, sendo que estas duas ultimas pegam um valor da classe NODE
+public class Edge<evalor,gvalor>{ //classe EDGE com variavel valor, from e to
 	public evalor valor{get;set;}
 	public Node<gvalor> From {get;set;}
 	public Node<gvalor> to {get;set;}
