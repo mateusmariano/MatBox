@@ -1,0 +1,2 @@
+-problemas com finalNodesCalc quando aperta criar após algumas operações, 
+-esta setado pra 0, resetar eles para serem utilizados nas operações

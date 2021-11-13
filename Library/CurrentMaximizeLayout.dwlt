@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 583, y: 342}
-  m_MaxSize: {x: 12008, y: 8042}
+  m_MinSize: {x: 579, y: 342}
+  m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
-  controlID: 7796
+  controlID: 12729
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 7797
+  controlID: 12690
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -307,8 +307,8 @@ MonoBehaviour:
     y: 292
     width: 720
     height: 343
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -368,9 +368,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b4380000
-    m_LastClickedID: 14516
-    m_ExpandedIDs: ead2ffffa2fbffff00000000f0390000843a0000
+    m_SelectedIDs: f0b80000
+    m_LastClickedID: 47344
+    m_ExpandedIDs: e239fdffac3afdfffe3bfdff503cfdff7a3cfdff803cfdff923cfdffead2ffffa2fbffff00000000f0390000843a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -413,10 +413,10 @@ MonoBehaviour:
     y: 0
     width: 446
     height: 635
-  m_MinSize: {x: 277, y: 171}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 277, y: 192}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 7696
+  controlID: 12590
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -473,7 +473,7 @@ MonoBehaviour:
     width: 444
     height: 315
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 206.95508}
+  m_ScrollPosition: {x: 0, y: 566.9551}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -177
@@ -611,8 +611,8 @@ MonoBehaviour:
     y: 336
     width: 446
     height: 299
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -716,19 +716,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/cenas
+    - Assets/scripts/CoordenadasHomogeneas
   m_ViewMode: 1
   m_StartGridSize: 54
   m_LastFolders:
-  - Assets/cenas
+  - Assets/scripts/CoordenadasHomogeneas
   m_LastFoldersGridSize: 54
   m_LastProjectPath: C:\Users\mateu\OneDrive\Documentos\prog\unity\TCC_Gabriel_Mateus
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 78280000
-    m_LastClickedID: 10360
-    m_ExpandedIDs: 00000000a2270000aa28000000ca9a3bffffff7f
+    m_SelectedIDs: a6280000
+    m_LastClickedID: 10406
+    m_ExpandedIDs: 00000000a227000084280000aa28000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -756,7 +756,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a2270000aa28000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000a227000084280000aa28000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -781,8 +781,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 36280000
-    m_LastClickedInstanceID: 10294
+    m_SelectedInstanceIDs: f0b80000
+    m_LastClickedInstanceID: 47344
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: d2f80000c82c00004e4a0300942b0000ca9f00009c9f00009c270000d027000036290300a2220000ea3d0600ba5e000054c40c0072ef0a00a8690000a4690000a2690000203e00008289000000000000
     m_RenameOverlay:

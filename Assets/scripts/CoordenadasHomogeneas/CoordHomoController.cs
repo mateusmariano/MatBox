@@ -116,10 +116,13 @@ public class CoordHomoController : MonoBehaviour {
 				GL.Vertex(finalnodes.ElementAt(2).pos);
 				
 			}else{
-				GL.Color(Color.green);
-				GL.Vertex(finalnodescalc.ElementAt(0).pos);
-				GL.Vertex(finalnodescalc.ElementAt(1).pos);
-				GL.Vertex(finalnodescalc.ElementAt(2).pos);
+
+				if(finalnodescalc.Count > 0){
+					GL.Color(Color.green);
+					GL.Vertex(finalnodescalc.ElementAt(0).pos);
+					GL.Vertex(finalnodescalc.ElementAt(1).pos);
+					GL.Vertex(finalnodescalc.ElementAt(2).pos);
+				}
 
 				if(!translacao){
 					GL.Color(Color.red);
@@ -142,6 +145,12 @@ public class CoordHomoController : MonoBehaviour {
 			return;
 		}
 
+		mostrarPosOperacao = false;
+		if(repeticaoOperacoes[0] || repeticaoOperacoes[1]){
+			mostrar = false;
+			finalnodes.Clear ();
+			finalnodescalc.Clear ();
+		}
 		finalnodes = new List<Nodes>();
 		finalnodescalc = new List<Nodes>();
 		#region create
