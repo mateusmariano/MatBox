@@ -1,3 +1,0 @@
--matriz debug em coordenadas
--atualizar imagens
--retirar resolucoes menores para desktop

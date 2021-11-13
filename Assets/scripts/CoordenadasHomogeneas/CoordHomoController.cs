@@ -18,6 +18,7 @@ public class CoordHomoController : MonoBehaviour {
 	public Text formulaTxt;
 	public int[] matrizvalues,tmatriz;
 	public int[,] matriz = new int[3,3];
+	public int[,] matrizaux = new int[3,3];
 	public int[,] matrizop = new int[3,3];
 	public int[,] matrizopesc = new int[3,3];
 	public int[,] matrizresulaux = new int[3,3];
@@ -194,6 +195,10 @@ public class CoordHomoController : MonoBehaviour {
 		matrizop[2,1] = System.Convert.ToInt32(dxdy[1].text);
 		matrizop[2,2] = 1;
 
+		matrizaux = matriz;
+		FormataMatrizesDebug(matrizaux, matriztxt);
+
+
 		#endregion
 		#region calc
 		for(int i = 0; i < 3; i ++){
@@ -208,7 +213,9 @@ public class CoordHomoController : MonoBehaviour {
 		}
 		#endregion
 
-		FormataMatrizDebug ();
+		FormataMatrizesDebug(matrizop, tmatriztxt);
+		FormataMatrizesDebug(matrizresul, matrizresultxt);
+
 
 		AtualizaMatriz ();
 
@@ -256,6 +263,9 @@ public class CoordHomoController : MonoBehaviour {
 		AddFinalNodes();
 
 		AtualizaFinalNodesPos();
+
+		matrizaux = matriz;
+		FormataMatrizesDebug(matrizaux, matriztxt);
 
 		#endregion
 		#region calc
@@ -328,7 +338,8 @@ public class CoordHomoController : MonoBehaviour {
 		}
 		#endregion
 
-		FormataMatrizDebug ();
+		FormataMatrizesDebug(matrizop, tmatriztxt);
+		FormataMatrizesDebug(matrizresul, matrizresultxt);
 
 		AtualizaMatriz ();
 
@@ -392,32 +403,15 @@ public class CoordHomoController : MonoBehaviour {
 		return false;
 	}
 
-	void FormataMatrizDebug(){
-		LimpaMatrizDebug ();
 
+	void FormataMatrizesDebug( int[,] matrizFormatada, Text txtMatriz){
+		txtMatriz.text = "";
 		for(int i = 0; i < 3; i ++){
 			for(int a = 0; a < 3;a++){
-				matriztxt.text += ("\t" + matriz[i,a].ToString());
+				txtMatriz.text += ("\t" + matrizFormatada[i,a].ToString());
 			}
-			matriztxt.text +=("\n");
+			txtMatriz.text +=("\n");
 		}
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				tmatriztxt.text += ("\t" + matrizop[i,a].ToString());
-			}
-			tmatriztxt.text +=("\n");
-		}
-		for(int i = 0; i < 3; i ++){
-			for(int a = 0; a < 3;a++){
-				matrizresultxt.text += ("\t" + matrizresul[i,a].ToString());
-			}
-			matrizresultxt.text +=("\n");
-		}
-	}
-	void LimpaMatrizDebug(){
-		matriztxt.text = "";
-		tmatriztxt.text = "";
-		matrizresultxt.text = "";
 	}
 
 	void AtualizaMatriz(){
