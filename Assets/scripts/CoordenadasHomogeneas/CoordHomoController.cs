@@ -150,6 +150,7 @@ public class CoordHomoController : MonoBehaviour {
 			mostrar = false;
 			finalnodes.Clear ();
 			finalnodescalc.Clear ();
+			AtualizaMatrizAoCriar ();
 		}
 		finalnodes = new List<Nodes>();
 		finalnodescalc = new List<Nodes>();
@@ -225,7 +226,6 @@ public class CoordHomoController : MonoBehaviour {
 		FormataMatrizesDebug(matrizop, tmatriztxt);
 		FormataMatrizesDebug(matrizresul, matrizresultxt);
 
-
 		AtualizaMatriz ();
 
 		AddFinalNodesCalc ();
@@ -236,7 +236,6 @@ public class CoordHomoController : MonoBehaviour {
 		translacao = true;
 
 	}
-
 
 	#endregion  
 	#region escalonamento
@@ -421,6 +420,18 @@ public class CoordHomoController : MonoBehaviour {
 			}
 			txtMatriz.text +=("\n");
 		}
+	}
+
+	void AtualizaMatrizAoCriar(){
+		matriz[0,0] = matrizvalues[0];
+		matriz[0,1] = matrizvalues[1];
+		matriz[0,2] = 1;
+		matriz[1,0] = matrizvalues[2];
+		matriz[1,1] = matrizvalues[3];
+		matriz[1,2] = 1;
+		matriz[2,0] = matrizvalues[4];
+		matriz[2,1] = matrizvalues[5];
+		matriz[2,2] = 1;
 	}
 
 	void AtualizaMatriz(){
