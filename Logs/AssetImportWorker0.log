@@ -1,0 +1,27 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.25f1 (9b9180224418) revision 10195328'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19042) 64bit CoreSingleLanguage' Language: 'pt' Physical Memory: 3918 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\2020.3.25f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/mateu/OneDrive/Documentos/prog/unity/TCC_Gabriel_Mateus
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+6483
+Successfully changed project path to: C:/Users/mateu/OneDrive/Documentos/prog/unity/TCC_Gabriel_Mateus
+C:/Users/mateu/OneDrive/Documentos/prog/unity/TCC_Gabriel_Mateus
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 1107.09 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.25f1 (9b9180224418)
+[Subsystems] Discovering subsystems at path C:/Program Files/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/mateu/OneDrive/Documentos/prog/unity/TCC_Gabriel_Mateus/Assets
+GfxDevice: creating device client; threaded=0
