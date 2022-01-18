@@ -13,15 +13,19 @@ public class DebugController : MonoBehaviour {
 	public void ShowDebug(string msg){
 		anim.SetInteger ("fade", 1);
 		debugText.text = msg;
+		Time.timeScale = 0.2f; //diminuindo a velocidade da aplicação
+		canvasGroup.blocksRaycasts = true; 
 		if(!ativado){
 			Invoke ("DisableDebug", 4f);
 			ativado = true;
 		}
 	}
 
-	void DisableDebug(){
+	public void DisableDebug(){
 		anim.SetInteger ("fade", 0);
 		debugText.text = "";
 		ativado = false;
+		Time.timeScale = 1;
+		canvasGroup.blocksRaycasts = false; 
 	}
 }
