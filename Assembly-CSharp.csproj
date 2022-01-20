@@ -36,21 +36,22 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\GrafoMenu.cs" />
-     <Compile Include="Assets\scripts\MenuController.cs" />
+     <Compile Include="Assets\scripts\Outros\GrafoMenu.cs" />
+     <Compile Include="Assets\scripts\Outros\MenuController.cs" />
      <Compile Include="Assets\scripts\Pilha\PilhaController.cs" />
-     <Compile Include="Assets\scripts\HistoricoOperacoesController.cs" />
-     <Compile Include="Assets\scripts\ClasseNodes.cs" />
+     <Compile Include="Assets\scripts\Outros\HistoricoOperacoesController.cs" />
+     <Compile Include="Assets\scripts\Outros\ClasseNodes.cs" />
      <Compile Include="Assets\scripts\Menu\menu.cs" />
-     <Compile Include="Assets\scripts\CenaUtils.cs" />
+     <Compile Include="Assets\scripts\Outros\CenaUtils.cs" />
      <Compile Include="Assets\scripts\CoordenadasHomogeneas\CameraController.cs" />
-     <Compile Include="Assets\scripts\ClasseGrafo.cs" />
+     <Compile Include="Assets\scripts\Outros\ClasseGrafo.cs" />
      <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaCameraController.cs" />
      <Compile Include="Assets\scripts\Fila\FilaController.cs" />
      <Compile Include="Assets\scripts\MatrizAdjacencia\MatrizAdjacenciaController.cs" />
      <Compile Include="Assets\scripts\CoordenadasHomogeneas\CoordHomoController.cs" />
-     <Compile Include="Assets\scripts\DebugController.cs" />
+     <Compile Include="Assets\scripts\Outros\DebugController.cs" />
      <Compile Include="Assets\scripts\Pilha\CenaControllerPF.cs" />
+     <Compile Include="Assets\scripts\Outros\ExplicController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\2020.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
