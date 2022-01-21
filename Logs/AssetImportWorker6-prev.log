@@ -657,3 +657,4 @@ Received Import Request.
 Start importing Assets/prefabs/Explicacao.prefab using Guid(e2e1bfda0a02ca54a9d4040f9f3555e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6002d36b971739c9c355a225bfe3a298') in 0.160623 seconds 
   Import took 0.188138 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
